@@ -59,7 +59,7 @@
             "@php artisan key:generate --ansi"
         ],
         "test": [
-            "phpunit tests/Feature"
+            "phpunit tests/Feature --configuration phpunit.xml"
         ]
     }
 }
