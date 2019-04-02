@@ -9,8 +9,6 @@ class BadWordController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -21,7 +19,6 @@ class BadWordController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -31,8 +28,9 @@ class BadWordController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BadWord  $badWord
-     * @return \Illuminate\Http\Response
+     * @param BadWord $badword
+     *
+     * @return BadWord
      */
     public function show(BadWord $badword)
     {
@@ -42,9 +40,10 @@ class BadWordController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BadWord  $badWord
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param BadWord $badword
+     *
+     * @return BadWord
      */
     public function update(Request $request, BadWord $badword)
     {
@@ -55,8 +54,10 @@ class BadWordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BadWord  $badWord
+     * @param BadWord $badword
+     *
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(BadWord $badword)
     {
