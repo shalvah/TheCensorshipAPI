@@ -9,7 +9,7 @@ class AlwaysRespondWithJson
 {
     public function handle(Request $request, Closure $next)
     {
-        $request = $request->duplicate(null, null, null, null, null, ['HTTP_ACCEPT' => 'APPLICATION/json']);
+        $request = $request->duplicate(null, null, null, null, null, ['HTTP_ACCEPT' => 'application/json']);
 
         return $next($request);
     }

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BadWordController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Fetch the list of bad words.
      */
     public function index()
     {
@@ -16,9 +16,12 @@ class BadWordController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Add a word to the list.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
+     * @bodyParam word string The bad word. Example: fudge
+     * @bodyParam how_bad_is_it string One of: `unspeakable`, `horrible`, `very bad`, `bad`. Example: very bad
      */
     public function store(Request $request)
     {
@@ -26,7 +29,7 @@ class BadWordController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Fetch a specific bad word.
      *
      * @param BadWord $badword
      *
@@ -38,21 +41,23 @@ class BadWordController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a bad word.
      *
      * @param  \Illuminate\Http\Request $request
      * @param BadWord $badword
+     *
+     * @bodyParam how_bad_is_it string One of: `unspeakable`, `horrible`, `very bad`, `bad`. Example: very bad
      *
      * @return BadWord
      */
     public function update(Request $request, BadWord $badword)
     {
-        $badword->update($request->all());
+        $badword->update($request->only('how_bad_is_it'));
         return $badword;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a bad word from the list.
      *
      * @param BadWord $badword
      *

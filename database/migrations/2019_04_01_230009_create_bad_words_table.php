@@ -16,7 +16,7 @@ class CreateBadWordsTable extends Migration
         Schema::create('bad_words', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('word');
-            $table->string('how_bad_is_it');
+            $table->string('how_bad_is_it'); //'unspeakable', 'horrible', 'very bad', 'bad'
             $table->timestamps();
         });
     }

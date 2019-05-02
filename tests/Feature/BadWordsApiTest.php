@@ -74,7 +74,6 @@ class BadWordsApiTest extends TestCase
     public function testCanEditABadWord()
     {
         $response = $this->putJson('/api/badwords/2', [
-            'word' => 'omgzomg',
             'how_bad_is_it' => 'bad',
         ]);
 
@@ -87,7 +86,6 @@ class BadWordsApiTest extends TestCase
             'updated_at',
         ]);
         $response->assertJson([
-            'word' => 'omgzomg',
             'how_bad_is_it' => 'bad',
         ]);
     }
