@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\BadWord;
 use Illuminate\Http\Request;
 
+/**
+ * @group Bad words
+ *
+ * Do it
+ */
 class BadWordController extends Controller
 {
     /**
+     * @group Other
+     *
      * Fetch the list of bad words.
      */
     public function index()
@@ -58,6 +65,8 @@ class BadWordController extends Controller
 
     /**
      * Remove a bad word from the list.
+     * @group Other
+     * Other bad words APIs.
      *
      * @param BadWord $badword
      *

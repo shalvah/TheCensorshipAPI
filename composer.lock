@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68a22c4ea795ca37af5adabf98a81709",
+    "content-hash": "bc4e46ac6478cbe8335ec82c20a4fcd1",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3364,17 +3364,12 @@
         },
         {
             "name": "mpociot/laravel-apidoc-generator",
-            "version": "3.12.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mpociot/laravel-apidoc-generator.git",
-                "reference": "d5eef26cc525cda9280f54ec539be5d022841e48"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/d5eef26cc525cda9280f54ec539be5d022841e48",
-                "reference": "d5eef26cc525cda9280f54ec539be5d022841e48",
-                "shasum": ""
+                "type": "path",
+                "url": "../Forks/mpociot-laravel-apidoc-generator",
+                "reference": "fdc7a725314030bd3cad4b86300591c8243ae316",
+                "shasum": null
             },
             "require": {
                 "fzaninotto/faker": "~1.8",
@@ -3392,12 +3387,12 @@
                 "league/fractal": "^0.17.0",
                 "mockery/mockery": "^1.2.0",
                 "orchestra/testbench": "3.5.* || 3.6.* || 3.7.*",
-                "phpstan/phpstan": "^0.11.15",
+                "phpstan/phpstan": "^0.9.0 || ^0.10.0 || ^0.11.15",
                 "phpunit/phpunit": "^6.0.0 || ^7.4.0"
             },
             "suggest": {
                 "league/fractal": "Required for transformers support",
-                "nunomaduro/collision": "For better reporting of errors that are thrpwn when generating docs"
+                "nunomaduro/collision": "For better reporting of errors that are thrown when generating docs"
             },
             "type": "library",
             "extra": {
@@ -3412,7 +3407,22 @@
                     "Mpociot\\ApiDoc\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Mpociot\\ApiDoc\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "lint": [
+                    "phpstan analyse -c ./phpstan.neon src"
+                ],
+                "test": [
+                    "phpunit --stop-on-failure"
+                ],
+                "test-ci": [
+                    "phpunit --coverage-clover=coverage.xml"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -3425,11 +3435,13 @@
             "description": "Generate beautiful API documentation from your Laravel application",
             "homepage": "http://github.com/mpociot/laravel-apidoc-generator",
             "keywords": [
-                "api",
-                "documentation",
-                "laravel"
+                "API",
+                "Documentation",
+                "Laravel"
             ],
-            "time": "2019-08-25T22:43:42+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "mpociot/reflection-docblock",
