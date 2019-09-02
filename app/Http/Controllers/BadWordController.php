@@ -49,7 +49,7 @@ class BadWordController extends Controller
 
     /**
      * Update a bad word.
-     *
+     * @authd
      * @param  \Illuminate\Http\Request $request
      * @param BadWord $badword
      *

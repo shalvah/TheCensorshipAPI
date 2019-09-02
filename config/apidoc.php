@@ -1,5 +1,8 @@
 <?php
 
+use Support\GetAuthWithDifferentTag;
+use Support\GetRandomMetadata;
+
 return [
 
     /*
@@ -204,4 +207,12 @@ return [
     ],
 
     'faker_seed' => 797,
+
+
+    'strategies' => [
+        'metadata' => [
+            // GetRandomMetadata::class,
+            GetAuthWithDifferentTag::class,
+        ],
+    ],
 ];
