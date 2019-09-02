@@ -1,5 +1,6 @@
 <?php
 
+use Support\AddOrganizationIdBodyParameter;
 use Support\GetAuthWithDifferentTag;
 use Support\GetRandomMetadata;
 
@@ -213,6 +214,10 @@ return [
         'metadata' => [
             // GetRandomMetadata::class,
             GetAuthWithDifferentTag::class,
+        ],
+        'bodyParameters' => [
+            \Mpociot\ApiDoc\Strategies\BodyParameters\GetFromDocBlocks::class,
+            AddOrganizationIdBodyParameter::class,
         ],
     ],
 ];
