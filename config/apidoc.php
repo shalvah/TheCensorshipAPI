@@ -61,7 +61,7 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    'api/*',
+                    '*',
                     // 'users/*',
                 ],
 
@@ -216,7 +216,7 @@ return [
             GetAuthWithDifferentTag::class,
         ],
         'bodyParameters' => [
-            \Mpociot\ApiDoc\Strategies\BodyParameters\GetFromDocBlocks::class,
+            \Mpociot\ApiDoc\Strategies\BodyParameters\GetFromBodyParamTag::class,
             AddOrganizationIdBodyParameter::class,
         ],
     ],

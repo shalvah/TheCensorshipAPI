@@ -19,7 +19,7 @@ class BadWordController extends Controller
      */
     public function index()
     {
-        return BadWord::all();
+        return response(BadWord::all(), 201);
     }
 
     /**
