@@ -27,7 +27,7 @@ class BadWordController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      *
-     * @bodyParam word string The bad word. Example: fudge
+     * @bodyParam word string The bad word. No-example
      * @bodyParam how_bad_is_it string One of: `unspeakable`, `horrible`, `very bad`, `bad`. Example: very bad
      */
     public function store(Request $request)
