@@ -16,6 +16,11 @@ class BadWordController extends Controller
      * @group Other
      *
      * Fetch the list of bad words.
+     *
+     * @queryParam filter[how_bad_is_it] Duh. Example: bad
+     * @queryParam filter[contains] String that word must contain.
+     * @queryParam ids[] List of IDs.
+     * @queryParam pageSize Um. Example: 5
      */
     public function index()
     {

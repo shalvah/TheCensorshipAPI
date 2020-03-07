@@ -4,6 +4,8 @@ title: API Reference
 language_tabs:
 - bash
 - javascript
+- php
+- python
 
 includes:
 
@@ -20,167 +22,6 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
-#Bad words
-
-
-Do it. Use a bad word today, make your family proud. This API will make that possible.
-<!-- START_dd624f6edeb53cb1c3c2d31f99ffd7e4 -->
-## Add a word to the list.
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost/api/badwords" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"word":"people","how_bad_is_it":"very bad"}'
-
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/badwords"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "word": "people",
-    "how_bad_is_it": "very bad"
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: body
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/badwords`
-
-#### Body Parameters
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    `word` | string |  optional  | The bad word.
-        `how_bad_is_it` | string |  optional  | One of: `unspeakable`, `horrible`, `very bad`, `bad`.
-        `nothing` | string |  optional  | A useless parameter for demo purposes.
-    
-<!-- END_dd624f6edeb53cb1c3c2d31f99ffd7e4 -->
-
-<!-- START_a1007de46f3a66a4ddde85ab670dedaf -->
-## Fetch a specific bad word.
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/api/badwords/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/badwords/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-"family"
-```
-
-### HTTP Request
-`GET api/badwords/{badword}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `badword` |  required  | The bad word ID.
-
-<!-- END_a1007de46f3a66a4ddde85ab670dedaf -->
-
-<!-- START_5b9e17569532ade8f1dbe350bc9c37ef -->
-## Update a bad word.
-
-<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost/api/badwords/3" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"how_bad_is_it":"very bad"}'
-
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/api/badwords/3"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "how_bad_is_it": "very bad"
-}
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-    body: body
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/badwords/{badword}`
-
-`PATCH api/badwords/{badword}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `badword` |  required  | The bad word ID.
-#### Body Parameters
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    `how_bad_is_it` | string |  optional  | One of: `unspeakable`, `horrible`, `very bad`, `bad`.
-    
-<!-- END_5b9e17569532ade8f1dbe350bc9c37ef -->
-
 #Other
 
 Other bad words APIs. You shouldn't use these unless you're a bad boy.
@@ -191,7 +32,8 @@ Other bad words APIs. You shouldn't use these unless you're a bad boy.
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/badwords" \
+    -G "http://localhost/api/badwords?filter[how_bad_is_it]=bad&filter[contains]=vero&ids[]=sunt&pageSize=5
+" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -200,6 +42,15 @@ curl -X GET \
 const url = new URL(
     "http://localhost/api/badwords"
 );
+
+let params = {
+    "filter[how_bad_is_it]": "bad",
+    "filter[contains]": "vero",
+    "ids[]": "sunt",
+    "pageSize": "5",
+};
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
 
 let headers = {
     "Content-Type": "application/json",
@@ -212,6 +63,47 @@ fetch(url, {
 })
     .then(response => response.json())
     .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost/api/badwords',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'query' => [
+            'filter[how_bad_is_it]'=> 'bad',
+            'filter[contains]'=> 'vero',
+            'ids[]'=> 'sunt',
+            'pageSize'=> '5',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+```python
+import requests
+import json
+
+url = 'http://localhost/api/badwords'
+params = {
+  'filter[how_bad_is_it]': 'bad',
+  'filter[contains]': 'vero',
+  'ids[]': 'sunt',
+  'pageSize': '5',
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+response = requests.request('GET', url, headers=headers, params=params)
+response.json()
 ```
 
 
@@ -224,6 +116,14 @@ fetch(url, {
 ### HTTP Request
 `GET api/badwords`
 
+#### Query Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -----------
+    `filter[how_bad_is_it]` |  optional  | Duh.
+    `filter[contains]` |  optional  | String that word must contain.
+    `ids[]` |  optional  | List of IDs.
+    `pageSize` |  optional  | Um.
 
 <!-- END_18436022a4931004b0b4a495765d871d -->
 
@@ -255,6 +155,35 @@ fetch(url, {
 })
     .then(response => response.json())
     .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->delete(
+    'http://localhost/api/badwords/1',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+```python
+import requests
+import json
+
+url = 'http://localhost/api/badwords/1'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+response = requests.request('DELETE', url, headers=headers)
+response.json()
 ```
 
 

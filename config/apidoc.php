@@ -115,7 +115,7 @@ return [
              * even if they did not match the rules above.
              * Note that the route must be referenced by name here (wildcards are supported).
              */
-            'include' => [
+            'include' => ['badwords.index',
                 // 'users.index', 'healthcheck*'
             ],
 
@@ -124,7 +124,7 @@ return [
              * even if they matched the rules above.
              * Note that the route must be referenced by name here (wildcards are supported).
              */
-            'exclude' => [
+            'exclude' => ['badwords.store','badwords.show','badwords.update'
                 // 'users.create', 'admin.*'
             ],
 
@@ -244,6 +244,8 @@ return [
     'example_languages' => [
         'bash',
         'javascript',
+        'php',
+        'python',
     ],
 
     /*
