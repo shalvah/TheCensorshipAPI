@@ -1,5 +1,7 @@
 <?php
 
+use Support\GetAuthWithDifferentTag;
+
 return [
     /*
      * The type of documentation output to generate.
@@ -193,26 +195,26 @@ return [
 
     'strategies' => [
         'metadata' => [
-            \Mpociot\ApiDoc\Extracting\Strategies\Metadata\GetFromDocBlocks::class,
+            \Knuckles\Scribe\Extracting\Strategies\Metadata\GetFromDocBlocks::class,
         ],
         'urlParameters' => [
-            \Mpociot\ApiDoc\Extracting\Strategies\UrlParameters\GetFromUrlParamTag::class,
+            \Knuckles\Scribe\Extracting\Strategies\UrlParameters\GetFromUrlParamTag::class,
         ],
         'queryParameters' => [
-            \Mpociot\ApiDoc\Extracting\Strategies\QueryParameters\GetFromQueryParamTag::class,
+            \Knuckles\Scribe\Extracting\Strategies\QueryParameters\GetFromQueryParamTag::class,
         ],
         'headers' => [
-            \Mpociot\ApiDoc\Extracting\Strategies\RequestHeaders\GetFromRouteRules::class,
+            \Knuckles\Scribe\Extracting\Strategies\Headers\GetFromRouteRules::class,
         ],
         'bodyParameters' => [
-            \Mpociot\ApiDoc\Extracting\Strategies\BodyParameters\GetFromBodyParamTag::class,
+            \Knuckles\Scribe\Extracting\Strategies\BodyParameters\GetFromBodyParamTag::class,
         ],
         'responses' => [
-            \Mpociot\ApiDoc\Extracting\Strategies\Responses\UseTransformerTags::class,
-            \Mpociot\ApiDoc\Extracting\Strategies\Responses\UseResponseTag::class,
-            \Mpociot\ApiDoc\Extracting\Strategies\Responses\UseResponseFileTag::class,
-            \Mpociot\ApiDoc\Extracting\Strategies\Responses\UseApiResourceTags::class,
-            \Mpociot\ApiDoc\Extracting\Strategies\Responses\ResponseCalls::class,
+            \Knuckles\Scribe\Extracting\Strategies\Responses\UseTransformerTags::class,
+            \Knuckles\Scribe\Extracting\Strategies\Responses\UseResponseTag::class,
+            \Knuckles\Scribe\Extracting\Strategies\Responses\UseResponseFileTag::class,
+            \Knuckles\Scribe\Extracting\Strategies\Responses\UseApiResourceTags::class,
+            \Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls::class,
         ],
     ],
 
@@ -279,5 +281,5 @@ return [
      * declare your own implementation of RouteMatcherInterface
      *
      */
-    'routeMatcher' => \Mpociot\ApiDoc\Matching\RouteMatcher::class,
+    'routeMatcher' => \Knuckles\Scribe\Matching\RouteMatcher::class,
 ];

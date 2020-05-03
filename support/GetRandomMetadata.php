@@ -5,7 +5,7 @@ namespace Support;
 use ReflectionClass;
 use ReflectionMethod;
 use Illuminate\Routing\Route;
-use Mpociot\ApiDoc\Strategies\Strategy;
+use Knuckles\Scribe\Strategies\Strategy;
 
 class GetRandomMetadata extends Strategy
 {

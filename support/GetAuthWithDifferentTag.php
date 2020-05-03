@@ -3,7 +3,7 @@
 namespace Support;
 
 use Mpociot\Reflection\DocBlock\Tag;
-use Mpociot\ApiDoc\Strategies\Metadata\GetFromDocBlocks;
+use Knuckles\Scribe\Extracting\Strategies\Metadata\GetFromDocBlocks;
 
 class GetAuthWithDifferentTag extends GetFromDocBlocks
 {

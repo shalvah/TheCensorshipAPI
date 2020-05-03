@@ -3,7 +3,7 @@
 namespace Support;
 
 use Illuminate\Routing\Route;
-use Mpociot\ApiDoc\Strategies\Strategy;
+use Knuckles\Scribe\Strategies\Strategy;
 
 class AddOrganizationIdBodyParameter extends Strategy
 {
