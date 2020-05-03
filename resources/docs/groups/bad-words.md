@@ -161,7 +161,7 @@ $response = $client->put(
     'http://localhost/api/badwords/3',
     [
         'headers' => [
-            'Authorization' => 'Bearer 3dfe1vcaZkE6VgD8ab46hP5',
+            'Authorization' => 'Bearer a84Z3hd5abeDk6VvE6Pg1fc',
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ],
@@ -177,7 +177,7 @@ print_r(json_decode((string) $body));
 ```bash
 curl -X PUT \
     "http://localhost/api/badwords/3" \
-    -H "Authorization: Bearer 3dfe1vcaZkE6VgD8ab46hP5" \
+    -H "Authorization: Bearer a84Z3hd5abeDk6VvE6Pg1fc" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"how_bad_is_it":"very bad"}'
@@ -190,7 +190,7 @@ const url = new URL(
 );
 
 let headers = {
-    "Authorization": "Bearer 3dfe1vcaZkE6VgD8ab46hP5",
+    "Authorization": "Bearer a84Z3hd5abeDk6VvE6Pg1fc",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };

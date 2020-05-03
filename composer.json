@@ -18,20 +18,20 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "facade/ignition": "^1.11",
+        "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.0",
-        "league/fractal": "^0.19.0",
-        "laravel/framework": "^6.0",
-        "laravel/telescope": "^2.0",
-        "laravel/tinker": "^1.0"
+        "laravel/framework": "^7.0",
+        "laravel/telescope": "^3.0",
+        "laravel/tinker": "^2.0",
+        "league/fractal": "^0.19.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "knuckleswtf/scribe": "5.x-dev",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "nunomaduro/collision": "^4.1"
     },
     "config": {
         "optimize-autoloader": true,

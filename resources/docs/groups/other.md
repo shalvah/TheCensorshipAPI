@@ -19,8 +19,8 @@ $response = $client->get(
         ],
         'query' => [
             'filter[how_bad_is_it]'=> 'bad',
-            'filter[contains]'=> 'magnam',
-            'ids[]'=> 'vitae',
+            'filter[contains]'=> 'quo',
+            'ids[]'=> 'aut',
             'pageSize'=> '5',
         ],
     ]
@@ -31,7 +31,7 @@ print_r(json_decode((string) $body));
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/badwords?filter[how_bad_is_it]=bad&filter[contains]=magnam&ids[]=vitae&pageSize=5" \
+    -G "http://localhost/api/badwords?filter[how_bad_is_it]=bad&filter[contains]=quo&ids[]=aut&pageSize=5" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -43,8 +43,8 @@ const url = new URL(
 
 let params = {
     "filter[how_bad_is_it]": "bad",
-    "filter[contains]": "magnam",
-    "ids[]": "vitae",
+    "filter[contains]": "quo",
+    "ids[]": "aut",
     "pageSize": "5",
 };
 Object.keys(params)
@@ -72,85 +72,85 @@ fetch(url, {
         "id": 1,
         "word": "minus",
         "how_bad_is_it": "bad",
-        "created_at": "2020-04-13 21:26:30",
-        "updated_at": "2020-04-13 21:26:30"
+        "created_at": "2020-04-13T21:26:30.000000Z",
+        "updated_at": "2020-04-13T21:26:30.000000Z"
     },
     {
         "id": 2,
         "word": "consectetur",
         "how_bad_is_it": "very bad",
-        "created_at": "2020-04-13 21:26:30",
-        "updated_at": "2020-04-13 21:26:30"
+        "created_at": "2020-04-13T21:26:30.000000Z",
+        "updated_at": "2020-04-13T21:26:30.000000Z"
     },
     {
         "id": 3,
         "word": "dolores",
         "how_bad_is_it": "very bad",
-        "created_at": "2020-04-13 21:26:30",
-        "updated_at": "2020-04-13 21:26:30"
+        "created_at": "2020-04-13T21:26:30.000000Z",
+        "updated_at": "2020-04-13T21:26:30.000000Z"
     },
     {
         "id": 4,
         "word": "eos",
         "how_bad_is_it": "horrible",
-        "created_at": "2020-04-13 21:26:30",
-        "updated_at": "2020-04-13 21:26:30"
+        "created_at": "2020-04-13T21:26:30.000000Z",
+        "updated_at": "2020-04-13T21:26:30.000000Z"
     },
     {
         "id": 5,
         "word": "vel",
         "how_bad_is_it": "very bad",
-        "created_at": "2020-04-13 21:26:30",
-        "updated_at": "2020-04-13 21:26:30"
+        "created_at": "2020-04-13T21:26:30.000000Z",
+        "updated_at": "2020-04-13T21:26:30.000000Z"
     },
     {
         "id": 6,
         "word": "qui",
         "how_bad_is_it": "bad",
-        "created_at": "2020-04-13 21:26:31",
-        "updated_at": "2020-04-13 21:26:31"
+        "created_at": "2020-04-13T21:26:31.000000Z",
+        "updated_at": "2020-04-13T21:26:31.000000Z"
     },
     {
         "id": 7,
         "word": "distinctio",
         "how_bad_is_it": "bad",
-        "created_at": "2020-04-13 21:26:31",
-        "updated_at": "2020-04-13 21:26:31"
+        "created_at": "2020-04-13T21:26:31.000000Z",
+        "updated_at": "2020-04-13T21:26:31.000000Z"
     },
     {
         "id": 8,
         "word": "alias",
         "how_bad_is_it": "horrible",
-        "created_at": "2020-04-13 21:26:31",
-        "updated_at": "2020-04-13 21:26:31"
+        "created_at": "2020-04-13T21:26:31.000000Z",
+        "updated_at": "2020-04-13T21:26:31.000000Z"
     },
     {
         "id": 9,
         "word": "aliquid",
         "how_bad_is_it": "horrible",
-        "created_at": "2020-04-13 21:26:31",
-        "updated_at": "2020-04-13 21:26:31"
+        "created_at": "2020-04-13T21:26:31.000000Z",
+        "updated_at": "2020-04-13T21:26:31.000000Z"
     },
     {
         "id": 10,
         "word": "cupiditate",
         "how_bad_is_it": "bad",
-        "created_at": "2020-04-13 21:26:31",
-        "updated_at": "2020-04-13 21:26:31"
+        "created_at": "2020-04-13T21:26:31.000000Z",
+        "updated_at": "2020-04-13T21:26:31.000000Z"
     },
     {
         "id": 11,
         "word": "hei",
         "how_bad_is_it": "very bad",
-        "created_at": "2020-04-27 18:56:56",
-        "updated_at": "2020-04-27 18:56:56"
+        "created_at": "2020-04-27T18:56:56.000000Z",
+        "updated_at": "2020-04-27T18:56:56.000000Z"
     },
     {
         "id": 12,
         "word": "hpoop",
         "how_bad_is_it": "bad",
-        "created_at": "2020-04-27 18:57:21",
-        "updated_at": "2020-04-27 18:57:21"
+        "created_at": "2020-04-27T18:57:21.000000Z",
+        "updated_at": "2020-04-27T18:57:21.000000Z"
     }
 ]
 ```

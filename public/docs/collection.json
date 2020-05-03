@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "TheCensorshipAPI API",
-        "_postman_id": "8fca465b-fad7-4266-88a0-cafb75280036",
+        "_postman_id": "ce7621a3-49ae-4371-842b-9dd6341d618d",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -96,7 +96,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "Bearer 3dfe1vcaZkE6VgD8ab46hP5"
+                                "value": "Bearer a84Z3hd5abeDk6VvE6Pg1fc"
                             },
                             {
                                 "key": "Content-Type",
@@ -227,13 +227,13 @@
                                 },
                                 {
                                     "key": "filter[contains]",
-                                    "value": "magnam",
+                                    "value": "quo",
                                     "description": "String that word must contain.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "ids[]",
-                                    "value": "vitae",
+                                    "value": "aut",
                                     "description": "List of IDs.",
                                     "disabled": false
                                 },
