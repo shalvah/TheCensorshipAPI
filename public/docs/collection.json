@@ -1,16 +1,75 @@
 {
     "variables": [],
     "info": {
-        "name": "TheCensorshipAPI API",
-        "_postman_id": "ce7621a3-49ae-4371-842b-9dd6341d618d",
+        "name": "The Censorship API",
+        "_postman_id": "82a7a8b0-6712-4db7-a39c-f0017885b501",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
     "item": [
         {
             "name": "Bad words",
-            "description": "\nDo it. Use a bad word today, make your family proud. This API will make that possible.",
+            "description": "\nAPIs for performing basic CRUD operations on our collection of bad words.\n\nThis group of endpoints will help you realise your dream of using a bad word. Thank us later.\ud83d\ude0e",
             "item": [
+                {
+                    "name": "Fetch the list of bad words.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/badwords",
+                            "query": [
+                                {
+                                    "key": "filters[how_bad_is_it]",
+                                    "value": "nihil",
+                                    "description": "Filter by level of badness.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "filters[created_at]",
+                                    "value": "nisi",
+                                    "description": "Filter for when the word was created.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "fields[]",
+                                    "value": "adipisci",
+                                    "description": "Fields to include in the response",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Page number to return.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "",
+                                    "description": "Number of items to return in a page. Defaults to 10.",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
                 {
                     "name": "Add a word to the list.",
                     "request": {
@@ -33,9 +92,9 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"word\": \"people\",\n    \"how_bad_is_it\": \"very bad\"\n}"
+                            "raw": "{\n    \"word\": \"family\",\n    \"how_bad_is_it\": \"very bad\"\n}"
                         },
-                        "description": "",
+                        "description": "This endpoint allows you to add a word to the list. It's a really useful endpoint,\nand you should play around with it for a bit.\n<aside class=\"warning\">We mean it; you really should.\ud83d\ude15<\/aside>",
                         "response": []
                     }
                 },
@@ -52,7 +111,7 @@
                                     "id": "badword",
                                     "key": "badword",
                                     "value": "1",
-                                    "description": "The bad word ID."
+                                    "description": "The ID of the word."
                                 }
                             ]
                         },
@@ -87,7 +146,7 @@
                                 {
                                     "id": "badword",
                                     "key": "badword",
-                                    "value": "3",
+                                    "value": "2",
                                     "description": "The bad word ID."
                                 }
                             ]
@@ -96,7 +155,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "Bearer a84Z3hd5abeDk6VvE6Pg1fc"
+                                "value": "Bearer dVZec6gEvfk5ha8b43DP6a1"
                             },
                             {
                                 "key": "Content-Type",
@@ -110,155 +169,6 @@
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"how_bad_is_it\": \"very bad\"\n}"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Endpoints",
-            "description": "",
-            "item": [
-                {
-                    "name": "api",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "api\/user",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/user",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "\/",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "\/",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Other",
-            "description": "",
-            "item": [
-                {
-                    "name": "Fetch the list of bad words.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "api\/badwords",
-                            "query": [
-                                {
-                                    "key": "filter[how_bad_is_it]",
-                                    "value": "bad",
-                                    "description": "Duh.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "filter[contains]",
-                                    "value": "quo",
-                                    "description": "String that word must contain.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "ids[]",
-                                    "value": "aut",
-                                    "description": "List of IDs.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "pageSize",
-                                    "value": "5",
-                                    "description": "Um.",
-                                    "disabled": false
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
                         },
                         "description": "",
                         "response": []
@@ -289,6 +199,214 @@
                             "raw": "[]"
                         },
                         "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Other endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Health check",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/healthcheck",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "Check if the API is still alive.\n\nPS. This is a Closure route. \ud83d\ude04",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/user",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Services",
+            "description": "\nServices provided by this API.",
+            "item": [
+                {
+                    "name": "Highlight bad words in texts.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/services\/highlightBadWordsInText",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much!\"\n    ]\n}"
+                        },
+                        "description": "This endpoint will highlight any bad words in the provided texts, surrounding them with `<em><\/em>` HTML tags.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Censor bad words in texts.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/services\/censorTexts\/:mode",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much\",\n        \"But they don't fucking love him back.\"\n    ]\n}"
+                        },
+                        "description": "This endpoint will censor any bad words in a list of texts.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Censor bad words in an image.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/services\/censorImage",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get the most frequently used bad words.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/services\/getTopBadWords",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "PS: This response was generated using the `@apiResource` and `@apiResourceModel` tag. \ud83d\ude0f",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get stats for a word's usage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/services\/getBadWordStats",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "PS: This response was generated using the `@transformer` tag. \ud83d\ude0f",
                         "response": []
                     }
                 }

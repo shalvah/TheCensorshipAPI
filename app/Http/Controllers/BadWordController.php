@@ -18,6 +18,9 @@ class BadWordController extends Controller
     /**
      * Fetch the list of bad words.
      *
+     * @queryParam filters[how_bad_is_it] Filter by level of badness.
+     * @queryParam filters[created_at] Filter for when the word was created.
+     * @queryParam fields[] Fields to include in the response
      */
     public function index()
     {

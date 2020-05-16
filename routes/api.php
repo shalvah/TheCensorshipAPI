@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServicesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/**
+ * Health check
+ *
+ * Check if the API is still alive.
+ *
+ * PS. This is a Closure route. 😄
+ */
+Route::get('/healthcheck', function () {
     return "Hi!! 👋";
 });
 
@@ -24,3 +32,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/badwords', 'BadWordController');
+
+Route::post('/services/highlightBadWordsInText', [ServicesController::class, 'highlightBadWordsInText']);
+
+Route::post('/services/censorTexts/{mode?}', [ServicesController::class, 'censorTexts']);
+
+Route::post('/services/censorImage', [ServicesController::class, 'censorImage']);
+
+Route::get('/services/getTopBadWords', [ServicesController::class, 'getTopBadWords']);
+
+Route::get('/services/getBadWordStats', [ServicesController::class, 'getBadWordStats']);

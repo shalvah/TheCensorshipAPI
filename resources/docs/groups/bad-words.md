@@ -22,6 +22,9 @@ $response = $client->get(
             'Accept' => 'application/json',
         ],
         'query' => [
+            'filters[how_bad_is_it]'=> 'nihil',
+            'filters[created_at]'=> 'nisi',
+            'fields[]'=> 'adipisci',
             'page'=> '1',
         ],
     ]
@@ -32,7 +35,7 @@ print_r(json_decode((string) $body));
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/badwords?page=1" \
+    -G "http://localhost/api/badwords?filters[how_bad_is_it]=nihil&filters[created_at]=nisi&fields[]=adipisci&page=1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -43,6 +46,9 @@ const url = new URL(
 );
 
 let params = {
+    "filters[how_bad_is_it]": "nihil",
+    "filters[created_at]": "nisi",
+    "fields[]": "adipisci",
     "page": "1",
 };
 Object.keys(params)
@@ -68,6 +74,9 @@ import json
 
 url = 'http://localhost/api/badwords'
 params = {
+  'filters[how_bad_is_it]': 'nihil',
+  'filters[created_at]': 'nisi',
+  'fields[]': 'adipisci',
   'page': '1',
 }
 headers = {
@@ -119,6 +128,15 @@ response.json()
  **`api/badwords`**
 
 <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<code><b>filters[how_bad_is_it]</b></code>&nbsp;          <i>optional</i>    <br>
+    Filter by level of badness.
+
+<code><b>filters[created_at]</b></code>&nbsp;          <i>optional</i>    <br>
+    Filter for when the word was created.
+
+<code><b>fields[]</b></code>&nbsp;          <i>optional</i>    <br>
+    Fields to include in the response
+
 <code><b>page</b></code>&nbsp;          <i>optional</i>    <br>
     Page number to return.
 
@@ -330,7 +348,7 @@ $response = $client->put(
     'http://localhost/api/badwords/2',
     [
         'headers' => [
-            'Authorization' => 'Bearer 4kc6fve5abZ1d63DaEPg8Vh',
+            'Authorization' => 'Bearer dVZec6gEvfk5ha8b43DP6a1',
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ],
@@ -346,7 +364,7 @@ print_r(json_decode((string) $body));
 ```bash
 curl -X PUT \
     "http://localhost/api/badwords/2" \
-    -H "Authorization: Bearer 4kc6fve5abZ1d63DaEPg8Vh" \
+    -H "Authorization: Bearer dVZec6gEvfk5ha8b43DP6a1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"how_bad_is_it":"very bad"}'
@@ -359,7 +377,7 @@ const url = new URL(
 );
 
 let headers = {
-    "Authorization": "Bearer 4kc6fve5abZ1d63DaEPg8Vh",
+    "Authorization": "Bearer dVZec6gEvfk5ha8b43DP6a1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -386,7 +404,7 @@ payload = {
     "how_bad_is_it": "very bad"
 }
 headers = {
-  'Authorization': 'Bearer 4kc6fve5abZ1d63DaEPg8Vh',
+  'Authorization': 'Bearer dVZec6gEvfk5ha8b43DP6a1',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }

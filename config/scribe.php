@@ -237,8 +237,7 @@ INTRO
                      */
                     'config' => [
                         'app.env' => 'documentation',
-                        'app.debug' => false,
-                        // 'service.key' => 'value',
+                        // 'app.debug' => false,
                     ],
 
                     /*

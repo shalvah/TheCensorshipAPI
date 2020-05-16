@@ -2,10 +2,10 @@
 
 Services provided by this API.
 
-## Highlight bad words in a text.
+## Highlight bad words in texts.
 
 
-Given some text, this endpoint will highlight any bad words in it, surrounding them with `<em></em>` HTML tags.
+This endpoint will highlight any bad words in the provided texts, surrounding them with `<em></em>` HTML tags.
 
 > Example request:
 
@@ -19,6 +19,11 @@ $response = $client->post(
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ],
+        'json' => [
+            'texts' => [
+                'He loves his family sooo much!',
+            ],
+        ],
     ]
 );
 $body = $response->getBody();
@@ -29,7 +34,9 @@ print_r(json_decode((string) $body));
 curl -X POST \
     "http://localhost/api/services/highlightBadWordsInText" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -d '{"texts":["He loves his family sooo much!"]}'
+
 ```
 
 ```javascript
@@ -42,10 +49,16 @@ let headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "texts": [
+        "He loves his family sooo much!"
+    ]
+}
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -56,20 +69,36 @@ import requests
 import json
 
 url = 'http://localhost/api/services/highlightBadWordsInText'
+payload = {
+    "texts": [
+        "He loves his family sooo much!"
+    ]
+}
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('POST', url, headers=headers)
+response = requests.request('POST', url, headers=headers, json=payload)
 response.json()
 ```
 
 
+> Example response (200):
+
+```json
+{
+    "highlighted": "He <em>loves<\/em> his <em>family<\/em> sooo much!"
+}
+```
 
 ### Request
 <small class="badge badge-black">POST</small>
  **`api/services/highlightBadWordsInText`**
+
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<code><b>texts.*</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
+    Texts to be highlighted.
 
 
 
@@ -84,11 +113,17 @@ This endpoint will censor any bad words in a list of texts.
 
 $client = new \GuzzleHttp\Client();
 $response = $client->post(
-    'http://localhost/api/services/censorTexts/accusantium',
+    'http://localhost/api/services/censorTexts/doloremque',
     [
         'headers' => [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
+        ],
+        'json' => [
+            'texts' => [
+                'He loves his family sooo much',
+                'But they don\'t fucking love him back.',
+            ],
         ],
     ]
 );
@@ -98,14 +133,16 @@ print_r(json_decode((string) $body));
 
 ```bash
 curl -X POST \
-    "http://localhost/api/services/censorTexts/accusantium" \
+    "http://localhost/api/services/censorTexts/doloremque" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json"
+    -H "Accept: application/json" \
+    -d '{"texts":["He loves his family sooo much","But they don't fucking love him back."]}'
+
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/services/censorTexts/accusantium"
+    "http://localhost/api/services/censorTexts/doloremque"
 );
 
 let headers = {
@@ -113,10 +150,17 @@ let headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "texts": [
+        "He loves his family sooo much",
+        "But they don't fucking love him back."
+    ]
+}
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -126,17 +170,31 @@ fetch(url, {
 import requests
 import json
 
-url = 'http://localhost/api/services/censorTexts/accusantium'
+url = 'http://localhost/api/services/censorTexts/doloremque'
+payload = {
+    "texts": [
+        "He loves his family sooo much",
+        "But they don't fucking love him back."
+    ]
+}
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('POST', url, headers=headers)
+response = requests.request('POST', url, headers=headers, json=payload)
 response.json()
 ```
 
 
+> Example response (200):
+
+```json
+[
+    "He l===s his f====y sooo much",
+    "But they don't fucking l===e him back."
+]
+```
 
 ### Request
 <small class="badge badge-black">POST</small>
@@ -144,7 +202,12 @@ response.json()
 
 <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
 <code><b>mode</b></code>&nbsp;          <i>optional</i>    <br>
-    Censorship mode. 'full' will replace the entire word with =====, 'partial' will replace all characters, but the first and last. Defaults to 'partial'.
+    Censorship mode. `full` will replace the entire word with `=====`,
+`partial` will replace all characters but the first and last. Defaults to `partial`.
+
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<code><b>texts</b></code>&nbsp; <small>array</small>         <i>optional</i>    <br>
+    Texts to be censored.
 
 
 
@@ -162,18 +225,14 @@ $response = $client->post(
     'http://localhost/api/services/censorImage',
     [
         'headers' => [
-            'Content-Type' => 'application/json',
+            'Content-Type' => 'multipart/form-data',
             'Accept' => 'application/json',
         ],
-        'json' => [
-            'content' => 'voluptatem',
-            'title' => 'My First Post',
-            'author_display_name' => 'accusamus',
-            'author_homepage' => 'http://rohan.com/molestias-aperiam-consequatur-dolorem-voluptatem-sint',
-            'author_timezone' => 'America/North_Dakota/Center',
-            'author_email' => 'woodrow49@example.net',
-            'publication_date' => '2020-05-16',
-            'category' => 'opinion',
+        'multipart' => [
+            [
+                'name' => 'image',
+                'contents' => fopen('C:\Users\shalvah\AppData\Local\Temp\php2D6D.tmp', 'r')
+            ],
         ],
     ]
 );
@@ -184,10 +243,9 @@ print_r(json_decode((string) $body));
 ```bash
 curl -X POST \
     "http://localhost/api/services/censorImage" \
-    -H "Content-Type: application/json" \
+    -H "Content-Type: multipart/form-data" \
     -H "Accept: application/json" \
-    -d '{"content":"voluptatem","title":"My First Post","author_display_name":"accusamus","author_homepage":"http:\/\/rohan.com\/molestias-aperiam-consequatur-dolorem-voluptatem-sint","author_timezone":"America\/North_Dakota\/Center","author_email":"woodrow49@example.net","publication_date":"2020-05-16","category":"opinion"}'
-
+    -F "image=@C:\Users\shalvah\AppData\Local\Temp\php2D6D.tmp" 
 ```
 
 ```javascript
@@ -196,20 +254,12 @@ const url = new URL(
 );
 
 let headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "content": "voluptatem",
-    "title": "My First Post",
-    "author_display_name": "accusamus",
-    "author_homepage": "http:\/\/rohan.com\/molestias-aperiam-consequatur-dolorem-voluptatem-sint",
-    "author_timezone": "America\/North_Dakota\/Center",
-    "author_email": "woodrow49@example.net",
-    "publication_date": "2020-05-16",
-    "category": "opinion"
-}
+const body = new FormData();
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "POST",
@@ -225,62 +275,47 @@ import requests
 import json
 
 url = 'http://localhost/api/services/censorImage'
-payload = {
-    "content": "voluptatem",
-    "title": "My First Post",
-    "author_display_name": "accusamus",
-    "author_homepage": "http:\/\/rohan.com\/molestias-aperiam-consequatur-dolorem-voluptatem-sint",
-    "author_timezone": "America\/North_Dakota\/Center",
-    "author_email": "woodrow49@example.net",
-    "publication_date": "2020-05-16",
-    "category": "opinion"
+files = {
+  'image': open('C:\Users\shalvah\AppData\Local\Temp\php2D6D.tmp', 'rb')
 }
 headers = {
-  'Content-Type': 'application/json',
+  'Content-Type': 'multipart/form-data',
   'Accept': 'application/json'
 }
 
-response = requests.request('POST', url, headers=headers, json=payload)
+response = requests.request('POST', url, headers=headers, files=files)
 response.json()
 ```
 
 
+> Example response (200):
+
+```json
+<Binary data> -  The censored image
+```
+> Example response (400, When the image&#039;s words are too powerful😢):
+
+```json
+{
+    "message": "Operation failed",
+    "reason": "The words are too touching.😭"
+}
+```
 
 ### Request
 <small class="badge badge-black">POST</small>
  **`api/services/censorImage`**
 
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<code><b>content</b></code>&nbsp; <small>string</small>     <br>
-    Contents of the post.
-
-<code><b>title</b></code>&nbsp; <small>string</small>     <br>
-    The title of the post.
-
-<code><b>author_display_name</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    
-
-<code><b>author_homepage</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    The value must be a valid URL.
-
-<code><b>author_timezone</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    The value must be a valid time zone, such as <code>Africa/Accra</code>.
-
-<code><b>author_email</b></code>&nbsp; <small>string</small>     <br>
-    The value must be a valid email address.
-
-<code><b>publication_date</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    Date to be used as the publication date. The value must be a valid date in the format Y-m-d.
-
-<code><b>category</b></code>&nbsp; <small>string</small>     <br>
-    Category the post belongs to. The value must be one of <code>news</code>, <code>opinion</code>, or <code>quiz</code>.
+<code><b>image</b></code>&nbsp; <small>file</small>     <br>
+    The image containing text to be censored.
 
 
 
 ## Get the most frequently used bad words.
 
 
-
+PS: This response was generated using the `@apiResource` and `@apiResourceModel` tag. 😏
 
 > Example request:
 
@@ -294,16 +329,6 @@ $response = $client->get(
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ],
-        'json' => [
-            'content' => 'eligendi',
-            'title' => 'My First Post',
-            'author_display_name' => 'rerum',
-            'author_homepage' => 'http://walsh.com/',
-            'author_timezone' => 'Pacific/Pago_Pago',
-            'author_email' => 'rau.lauriane@example.org',
-            'publication_date' => '2020-05-16',
-            'category' => 'opinion',
-        ],
     ]
 );
 $body = $response->getBody();
@@ -314,9 +339,7 @@ print_r(json_decode((string) $body));
 curl -X GET \
     -G "http://localhost/api/services/getTopBadWords" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -d '{"content":"eligendi","title":"My First Post","author_display_name":"rerum","author_homepage":"http:\/\/walsh.com\/","author_timezone":"Pacific\/Pago_Pago","author_email":"rau.lauriane@example.org","publication_date":"2020-05-16","category":"opinion"}'
-
+    -H "Accept: application/json"
 ```
 
 ```javascript
@@ -329,21 +352,10 @@ let headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "content": "eligendi",
-    "title": "My First Post",
-    "author_display_name": "rerum",
-    "author_homepage": "http:\/\/walsh.com\/",
-    "author_timezone": "Pacific\/Pago_Pago",
-    "author_email": "rau.lauriane@example.org",
-    "publication_date": "2020-05-16",
-    "category": "opinion"
-}
 
 fetch(url, {
     method: "GET",
     headers: headers,
-    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -354,22 +366,12 @@ import requests
 import json
 
 url = 'http://localhost/api/services/getTopBadWords'
-payload = {
-    "content": "eligendi",
-    "title": "My First Post",
-    "author_display_name": "rerum",
-    "author_homepage": "http:\/\/walsh.com\/",
-    "author_timezone": "Pacific\/Pago_Pago",
-    "author_email": "rau.lauriane@example.org",
-    "publication_date": "2020-05-16",
-    "category": "opinion"
-}
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers, json=payload)
+response = requests.request('GET', url, headers=headers)
 response.json()
 ```
 
@@ -377,123 +379,129 @@ response.json()
 > Example response (200):
 
 ```json
-[
-    {
-        "id": 1,
-        "word": "minus",
-        "how_bad_is_it": "bad",
-        "created_at": "2020-04-13T21:26:30.000000Z",
-        "updated_at": "2020-04-13T21:26:30.000000Z"
+{
+    "data": [
+        {
+            "word": "ut",
+            "how_bad_is_it": "horrible"
+        },
+        {
+            "word": "est",
+            "how_bad_is_it": "horrible"
+        }
+    ],
+    "links": {
+        "first": "\/?page=1",
+        "last": null,
+        "prev": null,
+        "next": null
     },
-    {
-        "id": 2,
-        "word": "consectetur",
-        "how_bad_is_it": "very bad",
-        "created_at": "2020-04-13T21:26:30.000000Z",
-        "updated_at": "2020-04-13T21:26:30.000000Z"
-    },
-    {
-        "id": 3,
-        "word": "dolores",
-        "how_bad_is_it": "very bad",
-        "created_at": "2020-04-13T21:26:30.000000Z",
-        "updated_at": "2020-04-13T21:26:30.000000Z"
-    },
-    {
-        "id": 4,
-        "word": "eos",
-        "how_bad_is_it": "horrible",
-        "created_at": "2020-04-13T21:26:30.000000Z",
-        "updated_at": "2020-04-13T21:26:30.000000Z"
-    },
-    {
-        "id": 5,
-        "word": "vel",
-        "how_bad_is_it": "very bad",
-        "created_at": "2020-04-13T21:26:30.000000Z",
-        "updated_at": "2020-04-13T21:26:30.000000Z"
-    },
-    {
-        "id": 6,
-        "word": "qui",
-        "how_bad_is_it": "bad",
-        "created_at": "2020-04-13T21:26:31.000000Z",
-        "updated_at": "2020-04-13T21:26:31.000000Z"
-    },
-    {
-        "id": 7,
-        "word": "distinctio",
-        "how_bad_is_it": "bad",
-        "created_at": "2020-04-13T21:26:31.000000Z",
-        "updated_at": "2020-04-13T21:26:31.000000Z"
-    },
-    {
-        "id": 8,
-        "word": "alias",
-        "how_bad_is_it": "horrible",
-        "created_at": "2020-04-13T21:26:31.000000Z",
-        "updated_at": "2020-04-13T21:26:31.000000Z"
-    },
-    {
-        "id": 9,
-        "word": "aliquid",
-        "how_bad_is_it": "horrible",
-        "created_at": "2020-04-13T21:26:31.000000Z",
-        "updated_at": "2020-04-13T21:26:31.000000Z"
-    },
-    {
-        "id": 10,
-        "word": "cupiditate",
-        "how_bad_is_it": "bad",
-        "created_at": "2020-04-13T21:26:31.000000Z",
-        "updated_at": "2020-04-13T21:26:31.000000Z"
-    },
-    {
-        "id": 11,
-        "word": "hei",
-        "how_bad_is_it": "very bad",
-        "created_at": "2020-04-27T18:56:56.000000Z",
-        "updated_at": "2020-04-27T18:56:56.000000Z"
-    },
-    {
-        "id": 12,
-        "word": "hpoop",
-        "how_bad_is_it": "bad",
-        "created_at": "2020-04-27T18:57:21.000000Z",
-        "updated_at": "2020-04-27T18:57:21.000000Z"
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "path": "\/",
+        "per_page": "5",
+        "to": 2
     }
-]
+}
 ```
 
 ### Request
 <small class="badge badge-green">GET</small>
  **`api/services/getTopBadWords`**
 
-<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-<code><b>content</b></code>&nbsp; <small>string</small>     <br>
-    Contents of the post.
 
-<code><b>title</b></code>&nbsp; <small>string</small>     <br>
-    The title of the post.
 
-<code><b>author_display_name</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    
+## Get stats for a word&#039;s usage.
 
-<code><b>author_homepage</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    The value must be a valid URL.
 
-<code><b>author_timezone</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    The value must be a valid time zone, such as <code>Africa/Accra</code>.
+PS: This response was generated using the `@transformer` tag. 😏
 
-<code><b>author_email</b></code>&nbsp; <small>string</small>     <br>
-    The value must be a valid email address.
+> Example request:
 
-<code><b>publication_date</b></code>&nbsp; <small>string</small>         <i>optional</i>    <br>
-    Date to be used as the publication date. The value must be a valid date in the format Y-m-d.
+```php
 
-<code><b>category</b></code>&nbsp; <small>string</small>     <br>
-    Category the post belongs to. The value must be one of <code>news</code>, <code>opinion</code>, or <code>quiz</code>.
+$client = new \GuzzleHttp\Client();
+$response = $client->get(
+    'http://localhost/api/services/getBadWordStats',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
 
+```bash
+curl -X GET \
+    -G "http://localhost/api/services/getBadWordStats" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/services/getBadWordStats"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```python
+import requests
+import json
+
+url = 'http://localhost/api/services/getBadWordStats'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()
+```
+
+
+> Example response (200):
+
+```json
+{
+    "data": {
+        "word": "ea",
+        "last_used": 1589650029,
+        "frequency": 2000245606
+    }
+}
+```
+
+### Request
+<small class="badge badge-green">GET</small>
+ **`api/services/getBadWordStats`**
+
+
+<h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+<code><b>word</b></code>&nbsp; <small>string</small>     <br>
+    The word
+
+<code><b>last_used</b></code>&nbsp; <small>integer</small>     <br>
+    Timestamp the word was last used anywhere in the world.
+
+<code><b>frequency</b></code>&nbsp; <small>integer</small>     <br>
+    The number of times people have used this word.
 
 
 
