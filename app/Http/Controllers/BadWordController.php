@@ -3,40 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\BadWord;
+use App\Http\Requests\CreateBadWordRequest;
 use Illuminate\Http\Request;
 
 /**
  * @group Bad words
  *
- * Do it. Use a bad word today, make your family proud. This API will make that possible.
+ * APIs for performing basic CRUD operations on our collection of bad words.
+ *
+ * This group of endpoints will help you realise your dream of using a bad word. Thank us later.😎
  */
 class BadWordController extends Controller
 {
     /**
-     * @group Other
-     *
      * Fetch the list of bad words.
      *
-     * @queryParam filter[how_bad_is_it] Duh. Example: bad
-     * @queryParam filter[contains] String that word must contain.
-     * @queryParam ids[] List of IDs.
-     * @queryParam pageSize Um. Example: 5
      */
     public function index()
     {
-        return response(BadWord::all(), 201);
+        return response(BadWord::paginate(request('pageSize') ?: 2), 200);
     }
+
 
     /**
      * Add a word to the list.
+     * This endpoint allows you to add a word to the list. It's a really useful endpoint,
+     * and you should play around with it for a bit.
+     * <aside class="warning">We mean it; you really should.😕</aside>
      *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @bodyParam word string The bad word. Example: people
-     * @bodyParam how_bad_is_it string One of: `unspeakable`, `horrible`, `very bad`, `bad`. Example: very bad
-     * @bodyParam nothing string A useless parameter for demo purposes. No-example
+     * @response status=201 scenario="Word added" {"id": "http://google.com?page=3"}
      */
-    public function store(Request $request)
+    public function store(CreateBadWordRequest $request)
     {
         return BadWord::create($request->all());
     }
@@ -44,8 +41,7 @@ class BadWordController extends Controller
     /**
      * Fetch a specific bad word.
      *
-     * @urlParam badword required The bad word ID. Example: 1
-     * @response "family"
+     * @urlParam badword required The ID of the word. Example: 1
      *
      * @param BadWord $badword
      *
@@ -58,11 +54,12 @@ class BadWordController extends Controller
 
     /**
      * Update a bad word.
-     * @authd
+     *
+     * @authenticated
      * @param  \Illuminate\Http\Request $request
      * @param BadWord $badword
      *
-     * @urlParam badword required The bad word ID. Example: 3
+     * @urlParam badword required The bad word ID. Example: 2
      * @bodyParam how_bad_is_it string One of: `unspeakable`, `horrible`, `very bad`, `bad`. Example: very bad
      *
      * @return BadWord
@@ -75,8 +72,8 @@ class BadWordController extends Controller
 
     /**
      * Remove a bad word from the list.
-     * @group Other
-     * Other bad words APIs. You shouldn't use these unless you're a bad boy.
+     *
+     * @response 204
      *
      * @param BadWord $badword
      *
@@ -86,6 +83,6 @@ class BadWordController extends Controller
     public function destroy(BadWord $badword)
     {
         $badword->delete();
-        return response()->noContent();
+        return response(null, 204);
     }
 }
