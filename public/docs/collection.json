@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "The Censorship API",
-        "_postman_id": "82a7a8b0-6712-4db7-a39c-f0017885b501",
+        "_postman_id": "853ee1bc-86e1-4b5f-a618-fd4102cf7fc8",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -21,19 +21,19 @@
                             "query": [
                                 {
                                     "key": "filters[how_bad_is_it]",
-                                    "value": "nihil",
+                                    "value": "enim",
                                     "description": "Filter by level of badness.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "filters[created_at]",
-                                    "value": "nisi",
+                                    "value": "exercitationem",
                                     "description": "Filter for when the word was created.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "fields[]",
-                                    "value": "adipisci",
+                                    "value": "debitis",
                                     "description": "Fields to include in the response",
                                     "disabled": false
                                 },
@@ -49,7 +49,8 @@
                                     "description": "Number of items to return in a page. Defaults to 10.",
                                     "disabled": true
                                 }
-                            ]
+                            ],
+                            "raw": "http:\/\/localhost\/api\/badwords?filters[how_bad_is_it]=enim&filters[created_at]=exercitationem&fields[]=debitis&page=1&pageSize="
                         },
                         "method": "GET",
                         "header": [
@@ -64,7 +65,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "",
                         "response": []
@@ -77,7 +83,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/badwords",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/badwords"
                         },
                         "method": "POST",
                         "header": [
@@ -92,7 +99,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"word\": \"family\",\n    \"how_bad_is_it\": \"very bad\"\n}"
+                            "raw": "{\n    \"word\": \"family\",\n    \"how_bad_is_it\": \"horrible\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "This endpoint allows you to add a word to the list. It's a really useful endpoint,\nand you should play around with it for a bit.\n<aside class=\"warning\">We mean it; you really should.\ud83d\ude15<\/aside>",
                         "response": []
@@ -106,6 +118,7 @@
                             "host": "localhost",
                             "path": "api\/badwords\/:badword",
                             "query": [],
+                            "raw": "http:\/\/localhost\/api\/badwords\/:badword",
                             "variable": [
                                 {
                                     "id": "badword",
@@ -128,7 +141,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "",
                         "response": []
@@ -142,6 +160,7 @@
                             "host": "localhost",
                             "path": "api\/badwords\/:badword",
                             "query": [],
+                            "raw": "http:\/\/localhost\/api\/badwords\/:badword",
                             "variable": [
                                 {
                                     "id": "badword",
@@ -155,7 +174,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "Bearer dVZec6gEvfk5ha8b43DP6a1"
+                                "value": "Bearer aZ34kgva8dhbfV66Pec15DE"
                             },
                             {
                                 "key": "Content-Type",
@@ -168,7 +187,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"how_bad_is_it\": \"very bad\"\n}"
+                            "raw": "{\n    \"how_bad_is_it\": \"very bad\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "",
                         "response": []
@@ -181,7 +205,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/badwords\/:badword",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/badwords\/:badword"
                         },
                         "method": "DELETE",
                         "header": [
@@ -196,7 +221,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "",
                         "response": []
@@ -215,7 +245,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/healthcheck",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/healthcheck"
                         },
                         "method": "GET",
                         "header": [
@@ -230,7 +261,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "Check if the API is still alive.\n\nPS. This is a Closure route. \ud83d\ude04",
                         "response": []
@@ -243,7 +279,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/user",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/user"
                         },
                         "method": "GET",
                         "header": [
@@ -258,7 +295,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "",
                         "response": []
@@ -277,7 +319,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/services\/highlightBadWordsInText",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/services\/highlightBadWordsInText"
                         },
                         "method": "POST",
                         "header": [
@@ -292,7 +335,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much!\"\n    ]\n}"
+                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much!\"\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "This endpoint will highlight any bad words in the provided texts, surrounding them with `<em><\/em>` HTML tags.",
                         "response": []
@@ -305,7 +353,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/services\/censorTexts\/:mode",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/services\/censorTexts\/:mode"
                         },
                         "method": "POST",
                         "header": [
@@ -320,7 +369,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much\",\n        \"But they don't fucking love him back.\"\n    ]\n}"
+                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much\",\n        \"But they don't fucking love him back.\"\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "This endpoint will censor any bad words in a list of texts.",
                         "response": []
@@ -333,7 +387,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/services\/censorImage",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/services\/censorImage"
                         },
                         "method": "POST",
                         "header": [
@@ -347,8 +402,14 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "[]"
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
                         },
                         "description": "This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.",
                         "response": []
@@ -361,7 +422,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/services\/getTopBadWords",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/services\/getTopBadWords"
                         },
                         "method": "GET",
                         "header": [
@@ -376,7 +438,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "PS: This response was generated using the `@apiResource` and `@apiResourceModel` tag. \ud83d\ude0f",
                         "response": []
@@ -389,7 +456,8 @@
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/services\/getBadWordStats",
-                            "query": []
+                            "query": [],
+                            "raw": "http:\/\/localhost\/api\/services\/getBadWordStats"
                         },
                         "method": "GET",
                         "header": [
@@ -404,7 +472,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "[]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
                         },
                         "description": "PS: This response was generated using the `@transformer` tag. \ud83d\ude0f",
                         "response": []

@@ -46,7 +46,7 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: May 16 2020</li>
+            <li>Last updated: July 17 2020</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -74,9 +74,9 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'filters[how_bad_is_it]'=&gt; 'nihil',
-            'filters[created_at]'=&gt; 'nisi',
-            'fields[]'=&gt; 'adipisci',
+            'filters[how_bad_is_it]'=&gt; 'enim',
+            'filters[created_at]'=&gt; 'exercitationem',
+            'fields[]'=&gt; 'debitis',
             'page'=&gt; '1',
         ],
     ]
@@ -84,7 +84,7 @@ $response = $client-&gt;get(
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/badwords?filters[how_bad_is_it]=nihil&amp;filters[created_at]=nisi&amp;fields[]=adipisci&amp;page=1" \
+    -G "http://localhost/api/badwords?filters[how_bad_is_it]=enim&amp;filters[created_at]=exercitationem&amp;fields[]=debitis&amp;page=1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -92,9 +92,9 @@ print_r(json_decode((string) $body));</code></pre>
 );
 
 let params = {
-    "filters[how_bad_is_it]": "nihil",
-    "filters[created_at]": "nisi",
-    "fields[]": "adipisci",
+    "filters[how_bad_is_it]": "enim",
+    "filters[created_at]": "exercitationem",
+    "fields[]": "debitis",
     "page": "1",
 };
 Object.keys(params)
@@ -116,9 +116,9 @@ import json
 
 url = 'http://localhost/api/badwords'
 params = {
-  'filters[how_bad_is_it]': 'nihil',
-  'filters[created_at]': 'nisi',
-  'fields[]': 'adipisci',
+  'filters[how_bad_is_it]': 'enim',
+  'filters[created_at]': 'exercitationem',
+  'fields[]': 'debitis',
   'page': '1',
 }
 headers = {
@@ -192,7 +192,7 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'word' =&gt; 'family',
-            'how_bad_is_it' =&gt; 'very bad',
+            'how_bad_is_it' =&gt; 'horrible',
         ],
     ]
 );
@@ -202,7 +202,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/badwords" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"word":"family","how_bad_is_it":"very bad"}'
+    -d '{"word":"family","how_bad_is_it":"horrible"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/badwords"
@@ -215,7 +215,7 @@ let headers = {
 
 let body = {
     "word": "family",
-    "how_bad_is_it": "very bad"
+    "how_bad_is_it": "horrible"
 }
 
 fetch(url, {
@@ -231,7 +231,7 @@ import json
 url = 'http://localhost/api/badwords'
 payload = {
     "word": "family",
-    "how_bad_is_it": "very bad"
+    "how_bad_is_it": "horrible"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -328,7 +328,7 @@ $response = $client-&gt;put(
     'http://localhost/api/badwords/2',
     [
         'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer dVZec6gEvfk5ha8b43DP6a1',
+            'Authorization' =&gt; 'Bearer aZ34kgva8dhbfV66Pec15DE',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -341,7 +341,7 @@ $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-bash">curl -X PUT \
     "http://localhost/api/badwords/2" \
-    -H "Authorization: Bearer dVZec6gEvfk5ha8b43DP6a1" \
+    -H "Authorization: Bearer aZ34kgva8dhbfV66Pec15DE" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"how_bad_is_it":"very bad"}'
@@ -351,7 +351,7 @@ print_r(json_decode((string) $body));</code></pre>
 );
 
 let headers = {
-    "Authorization": "Bearer dVZec6gEvfk5ha8b43DP6a1",
+    "Authorization": "Bearer aZ34kgva8dhbfV66Pec15DE",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -375,7 +375,7 @@ payload = {
     "how_bad_is_it": "very bad"
 }
 headers = {
-  'Authorization': 'Bearer dVZec6gEvfk5ha8b43DP6a1',
+  'Authorization': 'Bearer aZ34kgva8dhbfV66Pec15DE',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
@@ -648,7 +648,7 @@ Texts to be highlighted.</p>
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/services/censorTexts/doloremque',
+    'http://localhost/api/services/censorTexts/velit',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -665,13 +665,13 @@ $response = $client-&gt;post(
 $body = $response-&gt;getBody();
 print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/services/censorTexts/doloremque" \
+    "http://localhost/api/services/censorTexts/velit" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"texts":["He loves his family sooo much","But they don't fucking love him back."]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/services/censorTexts/doloremque"
+    "http://localhost/api/services/censorTexts/velit"
 );
 
 let headers = {
@@ -696,7 +696,7 @@ fetch(url, {
 <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/services/censorTexts/doloremque'
+url = 'http://localhost/api/services/censorTexts/velit'
 payload = {
     "texts": [
         "He loves his family sooo much",
@@ -744,7 +744,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'image',
-                'contents' =&gt; fopen('C:\Users\shalvah\AppData\Local\Temp\php2D6D.tmp', 'r')
+                'contents' =&gt; fopen('C:\Users\shalvah\AppData\Local\Temp\php3CF5.tmp', 'r')
             ],
         ],
     ]
@@ -755,7 +755,7 @@ print_r(json_decode((string) $body));</code></pre>
     "http://localhost/api/services/censorImage" \
     -H "Content-Type: multipart/form-data" \
     -H "Accept: application/json" \
-    -F "image=@C:\Users\shalvah\AppData\Local\Temp\php2D6D.tmp" </code></pre>
+    -F "image=@C:\Users\shalvah\AppData\Local\Temp\php3CF5.tmp" </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/services/censorImage"
 );
@@ -780,7 +780,7 @@ import json
 
 url = 'http://localhost/api/services/censorImage'
 files = {
-  'image': open('C:\Users\shalvah\AppData\Local\Temp\php2D6D.tmp', 'rb')
+  'image': open('C:\Users\shalvah\AppData\Local\Temp\php3CF5.tmp', 'rb')
 }
 headers = {
   'Content-Type': 'multipart/form-data',
@@ -860,11 +860,11 @@ response.json()</code></pre>
 <pre><code class="language-json">{
     "data": [
         {
-            "word": "ut",
-            "how_bad_is_it": "horrible"
+            "word": "quos",
+            "how_bad_is_it": "unspeakable"
         },
         {
-            "word": "est",
+            "word": "quia",
             "how_bad_is_it": "horrible"
         }
     ],
@@ -938,9 +938,9 @@ response.json()</code></pre>
 </blockquote>
 <pre><code class="language-json">{
     "data": {
-        "word": "ea",
-        "last_used": 1589650029,
-        "frequency": 2000245606
+        "word": "et",
+        "last_used": 1595003565,
+        "frequency": 1281351885
     }
 }</code></pre>
 <h3>Request</h3>
@@ -952,9 +952,7 @@ The word</p>
 <p><code><b>last_used</b></code>&nbsp; <small>integer</small>     <br>
 Timestamp the word was last used anywhere in the world.</p>
 <p><code><b>frequency</b></code>&nbsp; <small>integer</small>     <br>
-The number of times people have used this word.</p><h1>Bye 👋</h1>
-<p>Thanks for checking out our docs!</p>
-<p>This file was appended to Scribe's generated docs by adding an <code>append.md</code> in the <code>resources/docs</code> folder.</p>
+The number of times people have used this word.</p>
     </div>
     <div class="dark-box">
                     <div class="lang-selector">
