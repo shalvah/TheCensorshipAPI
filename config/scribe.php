@@ -8,6 +8,8 @@ return [
      */
     'type' => 'static',
 
+    'description' => 'The lovely API',
+
     /*
      * Settings for `static` type output.
      */
@@ -48,7 +50,7 @@ return [
         /*
          * Set this to true if your API is authenticated.
          */
-        'enabled' => true,
+        'enabled' => false,
 
         /*
          * Where is the auth value meant to be sent in a request?
@@ -124,18 +126,11 @@ INTRO
         /*
          * Specify whether the Postman collection should be generated.
          */
-        'enabled' => true,
+        'enabled' => false,
+    ],
 
-        /*
-         * The description for the exported Postman collection.
-         */
-        'description' => null,
-
-        /*
-         * The "Auth" section that should appear in the postman collection. See the schema docs for more information:
-         * https://schema.getpostman.com/json/collection/v2.0.0/docs/index.html
-         */
-        'auth' => null,
+    'openapi' => [
+        'enabled' => false,
     ],
 
     /*
@@ -153,7 +148,7 @@ INTRO
      * - 'logo' => 'img/logo.png' // for `laravel` type
      *
      */
-    'logo' => 'images/logo-scribe-whitetext.png',
+    'logo' => false,
 
     /*
      * The router your API is using (Laravel or Dingo).
@@ -180,7 +175,7 @@ INTRO
                 /*
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters). Example: 'users/*'.
                  */
-                'prefixes' => ['*'],
+                'prefixes' => ['api/badwords/*'],
 
                 /*
                  * (Dingo router only) Match only routes registered under this version.
@@ -298,6 +293,7 @@ INTRO
             \Knuckles\Scribe\Extracting\Strategies\Metadata\GetFromDocBlocks::class,
         ],
         'urlParameters' => [
+            \Knuckles\Scribe\Extracting\Strategies\UrlParameters\GetFromLaravelAPI::class,
             \Knuckles\Scribe\Extracting\Strategies\UrlParameters\GetFromUrlParamTag::class,
         ],
         'queryParameters' => [
@@ -306,6 +302,7 @@ INTRO
         ],
         'headers' => [
             \Knuckles\Scribe\Extracting\Strategies\Headers\GetFromRouteRules::class,
+            \Knuckles\Scribe\Extracting\Strategies\Headers\GetFromHeaderTag::class,
         ],
         'bodyParameters' => [
             \Knuckles\Scribe\Extracting\Strategies\BodyParameters\GetFromFormRequest::class,
