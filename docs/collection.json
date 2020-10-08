@@ -9,9 +9,9 @@
         }
     ],
     "info": {
-        "name": "The Censorship API API",
-        "_postman_id": "39e8e5d1-672b-439d-9e93-0c97484ff028",
-        "description": "I love this API!!",
+        "name": "The Censorship API",
+        "_postman_id": "60c2e244-978d-4c72-b01b-30e822d48e78",
+        "description": "The Censorship API gives you the power to censor anybody, anywhere. Keep them from using dirty words, like \"family\", and \"love\". Ugh\ud83e\udd2e.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
@@ -29,19 +29,19 @@
                             "query": [
                                 {
                                     "key": "filters%5Bhow_bad_is_it%5D",
-                                    "value": "minus",
+                                    "value": "eaque",
                                     "description": "Filter by level of badness.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "filters%5Bcreated_at%5D",
-                                    "value": "illum",
+                                    "value": "blanditiis",
                                     "description": "Filter for when the word was created.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "fields%5B%5D",
-                                    "value": "dolores",
+                                    "value": "corporis",
                                     "description": "Fields to include in the response",
                                     "disabled": false
                                 },
@@ -58,7 +58,7 @@
                                     "disabled": true
                                 }
                             ],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/badwords?filters%5Bhow_bad_is_it%5D=minus&filters%5Bcreated_at%5D=illum&fields%5B%5D=dolores&page=1&pageSize="
+                            "raw": "http:\/\/{{baseUrl}}\/api\/badwords?filters%5Bhow_bad_is_it%5D=eaque&filters%5Bcreated_at%5D=blanditiis&fields%5B%5D=corporis&page=1&pageSize="
                         },
                         "method": "GET",
                         "header": [
@@ -72,7 +72,10 @@
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -101,7 +104,10 @@
                             "mode": "raw",
                             "raw": "{\n    \"word\": \"\\\"children\\\"\",\n    \"how_bad_is_it\": \"very bad\",\n    \"dad\": false\n}"
                         },
-                        "description": "This endpoint allows you to add a word to the list. It's a really useful endpoint,\nand you should play around with it for a bit.\n<aside class=\"warning\">We mean it; you really should.\ud83d\ude15<\/aside>"
+                        "description": "This endpoint allows you to add a word to the list. It's a really useful endpoint,\nand you should play around with it for a bit.\n<aside class=\"warning\">We mean it; you really should.\ud83d\ude15<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -135,7 +141,10 @@
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -189,7 +198,7 @@
                                 {
                                     "id": "badword",
                                     "key": "badword",
-                                    "value": "nihil",
+                                    "value": "fugiat",
                                     "description": ""
                                 }
                             ]
@@ -206,7 +215,10 @@
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 }
@@ -238,7 +250,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Check if the API is still alive.\n\nPS. This is a Closure route. \ud83d\ude04"
+                        "description": "Check if the API is still alive.\n\nPS. This is a Closure route. \ud83d\ude04",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -264,7 +279,10 @@
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 }
@@ -297,9 +315,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much\",\n        \"But they don't fucking love him back.\"\n    ],\n    \"things\": [\n        {\n            \"name\": \"eveniet\"\n        },\n        {\n            \"name\": \"eveniet\"\n        }\n    ]\n}"
+                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much\",\n        \"But they don't fucking love him back.\"\n    ],\n    \"things\": [\n        {\n            \"name\": \"sapiente\"\n        },\n        {\n            \"name\": \"sapiente\"\n        }\n    ]\n}"
                         },
-                        "description": "This endpoint will highlight any bad words in the provided texts, surrounding them with `<em><\/em>` HTML tags."
+                        "description": "This endpoint will highlight any bad words in the provided texts, surrounding them with `<em><\/em>` HTML tags.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -316,7 +337,7 @@
                                 {
                                     "id": "mode",
                                     "key": "mode",
-                                    "value": "recusandae",
+                                    "value": "ea",
                                     "description": "Censorship mode. `full` will replace the entire word with `=====`,\n`partial` will replace all characters but the first and last. Defaults to `partial`."
                                 }
                             ]
@@ -334,9 +355,12 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"texts\": \"He loves his family sooo much\",\n    \"items\": {\n        \"inttt\": 14\n    },\n    \"things\": [\n        {\n            \"name\": \"dolorem\"\n        },\n        {\n            \"name\": \"dolorem\"\n        }\n    ]\n}"
+                            "raw": "{\n    \"texts\": \"He loves his family sooo much\",\n    \"items\": {\n        \"inttt\": 4\n    },\n    \"things\": [\n        {\n            \"name\": \"nam\"\n        },\n        {\n            \"name\": \"nam\"\n        }\n    ]\n}"
                         },
-                        "description": "This endpoint will censor any bad words in a list of texts."
+                        "description": "This endpoint will censor any bad words in a list of texts.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -371,7 +395,10 @@
                                 }
                             ]
                         },
-                        "description": "This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======."
+                        "description": "This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -397,7 +424,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "PS: This response was generated using the `@apiResource` and `@apiResourceModel` tag. \ud83d\ude0f"
+                        "description": "PS: This response was generated using the `@apiResource` and `@apiResourceModel` tag. \ud83d\ude0f",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 },
@@ -423,7 +453,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "PS: This response was generated using the `@transformer` tag. \ud83d\ude0f"
+                        "description": "PS: This response was generated using the `@transformer` tag. \ud83d\ude0f",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": []
                 }

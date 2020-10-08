@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
-    title: 'The Censorship API API'
-    description: 'I love this API!!'
+    title: 'The Censorship API'
+    description: 'The Censorship API gives you the power to censor anybody, anywhere. Keep them from using dirty words, like "family", and "love". Ugh🤮.'
     version: 1.0.0
 servers:
     -
@@ -16,32 +16,32 @@ paths:
                     in: query
                     name: 'filters[how_bad_is_it]'
                     description: 'Filter by level of badness.'
-                    example: minus
+                    example: eaque
                     required: false
                     schema:
                         type: string
                         description: 'Filter by level of badness.'
-                        example: minus
+                        example: eaque
                 -
                     in: query
                     name: 'filters[created_at]'
                     description: 'Filter for when the word was created.'
-                    example: illum
+                    example: blanditiis
                     required: false
                     schema:
                         type: string
                         description: 'Filter for when the word was created.'
-                        example: illum
+                        example: blanditiis
                 -
                     in: query
                     name: 'fields[]'
                     description: 'Fields to include in the response'
-                    example: dolores
+                    example: corporis
                     required: false
                     schema:
                         type: string
                         description: 'Fields to include in the response'
-                        example: dolores
+                        example: corporis
                 -
                     in: query
                     name: page
@@ -62,13 +62,6 @@ paths:
                         type: string
                         description: 'Number of items to return in a page. Defaults to 10.'
                         example: null
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -120,17 +113,11 @@ paths:
                                     total: { type: integer, example: 12 }
             tags:
                 - 'Bad words'
+            security: []
         post:
             summary: 'Add a word to the list.'
             description: "This endpoint allows you to add a word to the list. It's a really useful endpoint,\nand you should play around with it for a bit.\n<aside class=\"warning\">We mean it; you really should.😕</aside>"
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -179,18 +166,12 @@ paths:
                                     example: false
                             required:
                                 - word
+            security: []
     '/api/badwords/{badword}':
         get:
             summary: 'Fetch a specific bad word.'
             description: ''
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -226,6 +207,7 @@ paths:
                                     updated_at: { type: string, example: '2020-09-10T17:19:10.000000Z' }
             tags:
                 - 'Bad words'
+            security: []
         put:
             summary: 'Update a bad word.'
             description: ''
@@ -271,13 +253,6 @@ paths:
             parameters:
                 -
                     in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
-                -
-                    in: header
                     name: Content-Type
                     description: ''
                     example: application/json
@@ -295,6 +270,7 @@ paths:
                     description: '204'
             tags:
                 - 'Bad words'
+            security: []
         parameters:
             -
                 in: path
@@ -309,13 +285,6 @@ paths:
             summary: 'Health check'
             description: "Check if the API is still alive.\n\nPS. This is a Closure route. 😄"
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -340,18 +309,12 @@ paths:
                                 example: 'Hi!! 👋'
             tags:
                 - Endpoints
+            security: []
     /api/user:
         get:
             summary: ''
             description: ''
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -379,18 +342,12 @@ paths:
                                     message: { type: string, example: Unauthenticated. }
             tags:
                 - Endpoints
+            security: []
     /api/services/highlightBadWordsInText:
         post:
             summary: 'Highlight bad words in texts.'
             description: 'This endpoint will highlight any bad words in the provided texts, surrounding them with `<em></em>` HTML tags.'
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -434,19 +391,13 @@ paths:
                                     type: array
                                     description: 'Things to be done.'
                                     example: [[], []]
-                                    items: { type: object, properties: { name: { type: string, description: Thing., example: eveniet } }, required: [name] }
+                                    items: { type: object, properties: { name: { type: string, description: Thing., example: sapiente } }, required: [name] }
+            security: []
     '/api/services/censorTexts/{mode}':
         post:
             summary: 'Censor bad words in texts.'
             description: 'This endpoint will censor any bad words in a list of texts.'
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -491,12 +442,13 @@ paths:
                                     type: object
                                     description: 'An it'
                                     example: []
-                                    properties: { inttt: { type: integer, description: 'Other it', example: 14 } }
+                                    properties: { inttt: { type: integer, description: 'Other it', example: 4 } }
                                 things:
                                     type: array
                                     description: 'Things to be done.'
                                     example: [[], []]
-                                    items: { type: object, properties: { name: { type: string, description: Thing., example: dolorem } }, required: [name] }
+                                    items: { type: object, properties: { name: { type: string, description: Thing., example: nam } }, required: [name] }
+            security: []
         parameters:
             -
                 in: path
@@ -511,19 +463,12 @@ paths:
                         value: ''
                     present:
                         summary: 'When the value is present'
-                        value: recusandae
+                        value: ea
     /api/services/censorImage:
         post:
             summary: 'Censor bad words in an image.'
             description: 'This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.'
             parameters:
-                -
-                    in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
                 -
                     in: header
                     name: Content-Type
@@ -573,6 +518,7 @@ paths:
                                     description: 'The image containing text to be censored.'
                             required:
                                 - image
+            security: []
     /api/services/getTopBadWords:
         get:
             summary: 'Get the most frequently used bad words.'
@@ -580,13 +526,6 @@ paths:
             parameters:
                 -
                     in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
-                -
-                    in: header
                     name: Content-Type
                     description: ''
                     example: application/json
@@ -607,15 +546,16 @@ paths:
                             schema:
                                 type: object
                                 example:
-                                    data: [{ word: et, how_bad_is_it: horrible }, { word: explicabo, how_bad_is_it: 'very bad' }]
+                                    data: [{ word: sed, how_bad_is_it: 'very bad' }, { word: consequatur, how_bad_is_it: horrible }]
                                     links: { first: '/?page=1', last: null, prev: null, next: null }
                                     meta: { current_page: 1, from: 1, path: /, per_page: '5', to: 2 }
                                 properties:
-                                    data: { type: array, example: [{ word: et, how_bad_is_it: horrible }, { word: explicabo, how_bad_is_it: 'very bad' }], items: { type: object } }
+                                    data: { type: array, example: [{ word: sed, how_bad_is_it: 'very bad' }, { word: consequatur, how_bad_is_it: horrible }], items: { type: object } }
                                     links: { type: object, example: { first: '/?page=1', last: null, prev: null, next: null } }
                                     meta: { type: object, example: { current_page: 1, from: 1, path: /, per_page: '5', to: 2 } }
             tags:
                 - Services
+            security: []
     /api/services/getBadWordStats:
         get:
             summary: 'Get stats for a word''s usage.'
@@ -623,13 +563,6 @@ paths:
             parameters:
                 -
                     in: header
-                    name: Authorization
-                    description: ''
-                    example: 'Bearer {YOUR_AUTH_KEY}'
-                    schema:
-                        type: string
-                -
-                    in: header
                     name: Content-Type
                     description: ''
                     example: application/json
@@ -650,11 +583,12 @@ paths:
                             schema:
                                 type: object
                                 example:
-                                    data: { word: autem, last_used: 1602160967, frequency: 1577986977 }
+                                    data: { word: earum, last_used: 1602167486, frequency: 1240354959 }
                                 properties:
-                                    data: { type: object, example: { word: autem, last_used: 1602160967, frequency: 1577986977 } }
+                                    data: { type: object, example: { word: earum, last_used: 1602167486, frequency: 1240354959 } }
             tags:
                 - Services
+            security: []
 components:
     securitySchemes:
         default:

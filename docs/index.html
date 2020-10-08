@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Documentation</title>
+    <title>The Censorship API Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 
@@ -39,8 +39,8 @@
     </ul>
 
             <ul class="toc-footer" id="toc-footer">
-                            <li><a href="collection.json">View Postman Collection</a></li>
-                            <li><a href="openapi.yaml">View OpenAPI (Swagger) Spec</a></li>
+                            <li><a href="./collection.json">View Postman collection</a></li>
+                            <li><a href="./openapi.yaml">View OpenAPI (Swagger) spec</a></li>
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
@@ -51,31 +51,31 @@
     <div class="dark-box"></div>
     <div class="content">
         <h1>Introduction</h1>
-<p>Welcome to our API documentation!</p>
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile), and you can switch the programming language of the examples with the tabs in the top right (or from the nav menu at the top left on mobile).</aside>
+<p>The Censorship API gives you the power to censor anybody, anywhere. Keep them from using dirty words, like &quot;family&quot;, and &quot;love&quot;. Ugh🤮.</p>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 <aside class="warning">PS: the interactive requests will always fail because I haven't hosted the API anywhere.
-If you want to see them in action, clone <a href="https://github.com/shalvah/TheCensorshipAPI">the repo</a>, run <code>php artisan serve</code>, and then open up docs/index.html in the browser..</aside>
+If you want to see them in action, clone <a href="https://github.com/shalvah/TheCensorshipAPI">the repo</a> to your machine and run <code>php artisan serve</code>.</aside>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 <script>
     var baseUrl = "http://localhost:8000";
 </script>
 <script src="js/tryitout.js"></script>
 <blockquote>
-<p>Base URL:</p>
+<p>Base URL</p>
 </blockquote>
 <pre><code class="language-yaml">http://localhost:8000</code></pre><h1>Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {your-token}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {your-token}"</code></strong>.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p><h1>Bad words</h1>
 <p>APIs for performing basic CRUD operations on our collection of bad words.</p>
 <p>This group of endpoints will help you realise your dream of using a bad word. Thank us later.😎</p>
 <h2>Fetch the list of bad words.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost:8000/api/badwords?filters[how_bad_is_it]=minus&amp;filters[created_at]=illum&amp;fields[]=dolores&amp;page=1" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -G "http://localhost:8000/api/badwords?filters[how_bad_is_it]=eaque&amp;filters[created_at]=blanditiis&amp;fields[]=corporis&amp;page=1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -83,16 +83,15 @@ If you want to see them in action, clone <a href="https://github.com/shalvah/The
 );
 
 let params = {
-    "filters[how_bad_is_it]": "minus",
-    "filters[created_at]": "illum",
-    "fields[]": "dolores",
+    "filters[how_bad_is_it]": "eaque",
+    "filters[created_at]": "blanditiis",
+    "fields[]": "corporis",
     "page": "1",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -183,7 +182,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-badwords"></code></pre>
 </div>
-<form id="form-GETapi-badwords" data-method="GET" data-path="api/badwords" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-badwords', this);">
+<form id="form-GETapi-badwords" data-method="GET" data-path="api/badwords" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-badwords', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-badwords" onclick="tryItOut('GETapi-badwords');">Try it out ⚡</button>
@@ -193,9 +192,6 @@ fetch(url, {
 <p>
 <small class="badge badge-green">GET</small>
  <b><code>api/badwords</code></b>
-</p>
-<p>
-<label id="auth-GETapi-badwords" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-badwords" data-component="header"></label>
 </p>
 <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
 <p>
@@ -225,7 +221,6 @@ Page number to return.</p>
 Number of items to return in a page. Defaults to 10.</p>
 </form>
 <h2>Add a word to the list.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>This endpoint allows you to add a word to the list. It's a really useful endpoint,
 and you should play around with it for a bit.</p>
 <aside class="warning">We mean it; you really should.😕</aside>
@@ -234,7 +229,6 @@ and you should play around with it for a bit.</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
     "http://localhost:8000/api/badwords" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -d '{"word":"\"children\"","how_bad_is_it":"very bad","dad":false}'
@@ -244,7 +238,6 @@ and you should play around with it for a bit.</p>
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -274,7 +267,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-POSTapi-badwords"></code></pre>
 </div>
-<form id="form-POSTapi-badwords" data-method="POST" data-path="api/badwords" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-badwords', this);">
+<form id="form-POSTapi-badwords" data-method="POST" data-path="api/badwords" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-badwords', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-badwords" onclick="tryItOut('POSTapi-badwords');">Try it out ⚡</button>
@@ -284,9 +277,6 @@ fetch(url, {
 <p>
 <small class="badge badge-black">POST</small>
  <b><code>api/badwords</code></b>
-</p>
-<p>
-<label id="auth-POSTapi-badwords" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-badwords" data-component="header"></label>
 </p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
 <p>
@@ -308,13 +298,11 @@ One of: `unspeakable`, `horrible`, `very bad`, `bad`.</p>
 
 </form>
 <h2>Fetch a specific bad word.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
     -G "http://localhost:8000/api/badwords/1" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -322,7 +310,6 @@ One of: `unspeakable`, `horrible`, `very bad`, `bad`.</p>
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -349,7 +336,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-badwords--badword-"></code></pre>
 </div>
-<form id="form-GETapi-badwords--badword-" data-method="GET" data-path="api/badwords/{badword}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-badwords--badword-', this);">
+<form id="form-GETapi-badwords--badword-" data-method="GET" data-path="api/badwords/{badword}" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-badwords--badword-', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-badwords--badword-" onclick="tryItOut('GETapi-badwords--badword-');">Try it out ⚡</button>
@@ -359,9 +346,6 @@ fetch(url, {
 <p>
 <small class="badge badge-green">GET</small>
  <b><code>api/badwords/{badword}</code></b>
-</p>
-<p>
-<label id="auth-GETapi-badwords--badword-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-badwords--badword-" data-component="header"></label>
 </p>
 <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
 <p>
@@ -442,21 +426,18 @@ One of: `unspeakable`, `horrible`, `very bad`, `bad`.</p>
 
 </form>
 <h2>Remove a bad word from the list.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X DELETE \
-    "http://localhost:8000/api/badwords/nihil" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    "http://localhost:8000/api/badwords/fugiat" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/badwords/nihil"
+    "http://localhost:8000/api/badwords/fugiat"
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -477,7 +458,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-DELETEapi-badwords--badword-"></code></pre>
 </div>
-<form id="form-DELETEapi-badwords--badword-" data-method="DELETE" data-path="api/badwords/{badword}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-badwords--badword-', this);">
+<form id="form-DELETEapi-badwords--badword-" data-method="DELETE" data-path="api/badwords/{badword}" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-badwords--badword-', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-DELETEapi-badwords--badword-" onclick="tryItOut('DELETEapi-badwords--badword-');">Try it out ⚡</button>
@@ -488,9 +469,6 @@ fetch(url, {
 <small class="badge badge-red">DELETE</small>
  <b><code>api/badwords/{badword}</code></b>
 </p>
-<p>
-<label id="auth-DELETEapi-badwords--badword-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-badwords--badword-" data-component="header"></label>
-</p>
 <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
 <p>
 <b><code>badword</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
@@ -499,7 +477,6 @@ fetch(url, {
 </p>
 </form><h1>Endpoints</h1>
 <h2>Health check</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>Check if the API is still alive.</p>
 <p>PS. This is a Closure route. 😄</p>
 <blockquote>
@@ -507,7 +484,6 @@ fetch(url, {
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
     -G "http://localhost:8000/api/healthcheck" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -515,7 +491,6 @@ fetch(url, {
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -537,7 +512,7 @@ Hi!! 👋</code></pre>
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-healthcheck"></code></pre>
 </div>
-<form id="form-GETapi-healthcheck" data-method="GET" data-path="api/healthcheck" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-healthcheck', this);">
+<form id="form-GETapi-healthcheck" data-method="GET" data-path="api/healthcheck" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-healthcheck', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-healthcheck" onclick="tryItOut('GETapi-healthcheck');">Try it out ⚡</button>
@@ -548,18 +523,13 @@ Hi!! 👋</code></pre>
 <small class="badge badge-green">GET</small>
  <b><code>api/healthcheck</code></b>
 </p>
-<p>
-<label id="auth-GETapi-healthcheck" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-healthcheck" data-component="header"></label>
-</p>
 </form>
 <h2>api/user</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
     -G "http://localhost:8000/api/user" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -567,7 +537,6 @@ Hi!! 👋</code></pre>
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -590,7 +559,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-user"></code></pre>
 </div>
-<form id="form-GETapi-user" data-method="GET" data-path="api/user" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
+<form id="form-GETapi-user" data-method="GET" data-path="api/user" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-user" onclick="tryItOut('GETapi-user');">Try it out ⚡</button>
@@ -601,30 +570,24 @@ fetch(url, {
 <small class="badge badge-green">GET</small>
  <b><code>api/user</code></b>
 </p>
-<p>
-<label id="auth-GETapi-user" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-user" data-component="header"></label>
-</p>
 </form><h1>Services</h1>
 <p>Services provided by this API.</p>
 <h2>Highlight bad words in texts.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>This endpoint will highlight any bad words in the provided texts, surrounding them with <code>&lt;em&gt;&lt;/em&gt;</code> HTML tags.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
     "http://localhost:8000/api/services/highlightBadWordsInText" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/x-www-form-urlencoded" \
     -H "Accept: application/json" \
-    -d '{"texts":["He loves his family sooo much","But they don't fucking love him back."],"things":[{"name":"eveniet"},{"name":"eveniet"}]}'
+    -d '{"texts":["He loves his family sooo much","But they don't fucking love him back."],"things":[{"name":"sapiente"},{"name":"sapiente"}]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/services/highlightBadWordsInText"
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/x-www-form-urlencoded",
     "Accept": "application/json",
 };
@@ -636,10 +599,10 @@ let body = {
     ],
     "things": [
         {
-            "name": "eveniet"
+            "name": "sapiente"
         },
         {
-            "name": "eveniet"
+            "name": "sapiente"
         }
     ]
 }
@@ -663,7 +626,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-POSTapi-services-highlightBadWordsInText"></code></pre>
 </div>
-<form id="form-POSTapi-services-highlightBadWordsInText" data-method="POST" data-path="api/services/highlightBadWordsInText" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/x-www-form-urlencoded","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-highlightBadWordsInText', this);">
+<form id="form-POSTapi-services-highlightBadWordsInText" data-method="POST" data-path="api/services/highlightBadWordsInText" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/x-www-form-urlencoded","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-highlightBadWordsInText', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-services-highlightBadWordsInText" onclick="tryItOut('POSTapi-services-highlightBadWordsInText');">Try it out ⚡</button>
@@ -673,9 +636,6 @@ fetch(url, {
 <p>
 <small class="badge badge-black">POST</small>
  <b><code>api/services/highlightBadWordsInText</code></b>
-</p>
-<p>
-<label id="auth-POSTapi-services-highlightBadWordsInText" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-services-highlightBadWordsInText" data-component="header"></label>
 </p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
 <p>
@@ -701,24 +661,21 @@ Thing.</p>
 
 </form>
 <h2>Censor bad words in texts.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>This endpoint will censor any bad words in a list of texts.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost:8000/api/services/censorTexts/recusandae" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    "http://localhost:8000/api/services/censorTexts/ea" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"texts":"He loves his family sooo much","items":{"inttt":14},"things":[{"name":"dolorem"},{"name":"dolorem"}]}'
+    -d '{"texts":"He loves his family sooo much","items":{"inttt":4},"things":[{"name":"nam"},{"name":"nam"}]}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/services/censorTexts/recusandae"
+    "http://localhost:8000/api/services/censorTexts/ea"
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -726,14 +683,14 @@ let headers = {
 let body = {
     "texts": "He loves his family sooo much",
     "items": {
-        "inttt": 14
+        "inttt": 4
     },
     "things": [
         {
-            "name": "dolorem"
+            "name": "nam"
         },
         {
-            "name": "dolorem"
+            "name": "nam"
         }
     ]
 }
@@ -758,7 +715,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-POSTapi-services-censorTexts--mode--"></code></pre>
 </div>
-<form id="form-POSTapi-services-censorTexts--mode--" data-method="POST" data-path="api/services/censorTexts/{mode?}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-censorTexts--mode--', this);">
+<form id="form-POSTapi-services-censorTexts--mode--" data-method="POST" data-path="api/services/censorTexts/{mode?}" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-censorTexts--mode--', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-services-censorTexts--mode--" onclick="tryItOut('POSTapi-services-censorTexts--mode--');">Try it out ⚡</button>
@@ -768,9 +725,6 @@ fetch(url, {
 <p>
 <small class="badge badge-black">POST</small>
  <b><code>api/services/censorTexts/{mode?}</code></b>
-</p>
-<p>
-<label id="auth-POSTapi-services-censorTexts--mode--" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-services-censorTexts--mode--" data-component="header"></label>
 </p>
 <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
 <p>
@@ -817,14 +771,12 @@ Thing.</p>
 
 </form>
 <h2>Censor bad words in an image.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
     "http://localhost:8000/api/services/censorImage" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: multipart/form-data" \
     -H "Accept: application/json" \
     -F "image=@C:\Users\shalvah\Projects\Temp\TheCensorshipAPI\public\images\logo-scribe.png" </code></pre>
@@ -833,7 +785,6 @@ Thing.</p>
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -865,7 +816,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-POSTapi-services-censorImage"></code></pre>
 </div>
-<form id="form-POSTapi-services-censorImage" data-method="POST" data-path="api/services/censorImage" data-authed="1" data-hasfiles="1" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"multipart\/form-data","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-censorImage', this);">
+<form id="form-POSTapi-services-censorImage" data-method="POST" data-path="api/services/censorImage" data-authed="0" data-hasfiles="1" data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-censorImage', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-services-censorImage" onclick="tryItOut('POSTapi-services-censorImage');">Try it out ⚡</button>
@@ -876,9 +827,6 @@ fetch(url, {
 <small class="badge badge-black">POST</small>
  <b><code>api/services/censorImage</code></b>
 </p>
-<p>
-<label id="auth-POSTapi-services-censorImage" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-services-censorImage" data-component="header"></label>
-</p>
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
 <p>
 <b><code>image</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
@@ -888,14 +836,12 @@ The image containing text to be censored.</p>
 
 </form>
 <h2>Get the most frequently used bad words.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>PS: This response was generated using the <code>@apiResource</code> and <code>@apiResourceModel</code> tag. 😏</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
     -G "http://localhost:8000/api/services/getTopBadWords" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -903,7 +849,6 @@ The image containing text to be censored.</p>
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -918,12 +863,12 @@ fetch(url, {
 <pre><code class="language-json">{
     "data": [
         {
-            "word": "et",
-            "how_bad_is_it": "horrible"
+            "word": "sed",
+            "how_bad_is_it": "very bad"
         },
         {
-            "word": "explicabo",
-            "how_bad_is_it": "very bad"
+            "word": "consequatur",
+            "how_bad_is_it": "horrible"
         }
     ],
     "links": {
@@ -948,7 +893,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-services-getTopBadWords"></code></pre>
 </div>
-<form id="form-GETapi-services-getTopBadWords" data-method="GET" data-path="api/services/getTopBadWords" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-services-getTopBadWords', this);">
+<form id="form-GETapi-services-getTopBadWords" data-method="GET" data-path="api/services/getTopBadWords" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-services-getTopBadWords', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-services-getTopBadWords" onclick="tryItOut('GETapi-services-getTopBadWords');">Try it out ⚡</button>
@@ -959,19 +904,14 @@ fetch(url, {
 <small class="badge badge-green">GET</small>
  <b><code>api/services/getTopBadWords</code></b>
 </p>
-<p>
-<label id="auth-GETapi-services-getTopBadWords" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-services-getTopBadWords" data-component="header"></label>
-</p>
 </form>
 <h2>Get stats for a word&#039;s usage.</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
 <p>PS: This response was generated using the <code>@transformer</code> tag. 😏</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
     -G "http://localhost:8000/api/services/getBadWordStats" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
@@ -979,7 +919,6 @@ fetch(url, {
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -993,9 +932,9 @@ fetch(url, {
 </blockquote>
 <pre><code class="language-json">{
     "data": {
-        "word": "autem",
-        "last_used": 1602160967,
-        "frequency": 1577986977
+        "word": "earum",
+        "last_used": 1602167486,
+        "frequency": 1240354959
     }
 }</code></pre>
 <div id="execution-results-GETapi-services-getBadWordStats" hidden>
@@ -1006,7 +945,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-services-getBadWordStats"></code></pre>
 </div>
-<form id="form-GETapi-services-getBadWordStats" data-method="GET" data-path="api/services/getBadWordStats" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-services-getBadWordStats', this);">
+<form id="form-GETapi-services-getBadWordStats" data-method="GET" data-path="api/services/getBadWordStats" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-services-getBadWordStats', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-services-getBadWordStats" onclick="tryItOut('GETapi-services-getBadWordStats');">Try it out ⚡</button>
@@ -1016,9 +955,6 @@ fetch(url, {
 <p>
 <small class="badge badge-green">GET</small>
  <b><code>api/services/getBadWordStats</code></b>
-</p>
-<p>
-<label id="auth-GETapi-services-getBadWordStats" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-services-getBadWordStats" data-component="header"></label>
 </p>
 </form>
 <h3>Response</h3>

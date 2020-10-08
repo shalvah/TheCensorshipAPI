@@ -3,7 +3,6 @@
 
 ## Health check
 
-<small class="badge badge-darkred">requires authentication</small>
 
 Check if the API is still alive.
 
@@ -14,7 +13,6 @@ PS. This is a Closure route. 😄
 ```bash
 curl -X GET \
     -G "http://localhost:8000/api/healthcheck" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -25,7 +23,6 @@ const url = new URL(
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -52,7 +49,7 @@ Hi!! 👋
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-healthcheck"></code></pre>
 </div>
-<form id="form-GETapi-healthcheck" data-method="GET" data-path="api/healthcheck" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-healthcheck', this);">
+<form id="form-GETapi-healthcheck" data-method="GET" data-path="api/healthcheck" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-healthcheck', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-healthcheck" onclick="tryItOut('GETapi-healthcheck');">Try it out ⚡</button>
@@ -63,15 +60,11 @@ Hi!! 👋
 <small class="badge badge-green">GET</small>
  <b><code>api/healthcheck</code></b>
 </p>
-<p>
-<label id="auth-GETapi-healthcheck" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-healthcheck" data-component="header"></label>
-</p>
 </form>
 
 
 ## api/user
 
-<small class="badge badge-darkred">requires authentication</small>
 
 
 
@@ -80,7 +73,6 @@ Hi!! 👋
 ```bash
 curl -X GET \
     -G "http://localhost:8000/api/user" \
-    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -91,7 +83,6 @@ const url = new URL(
 );
 
 let headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -119,7 +110,7 @@ fetch(url, {
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-user"></code></pre>
 </div>
-<form id="form-GETapi-user" data-method="GET" data-path="api/user" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
+<form id="form-GETapi-user" data-method="GET" data-path="api/user" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
         <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-user" onclick="tryItOut('GETapi-user');">Try it out ⚡</button>
@@ -129,9 +120,6 @@ fetch(url, {
 <p>
 <small class="badge badge-green">GET</small>
  <b><code>api/user</code></b>
-</p>
-<p>
-<label id="auth-GETapi-user" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-user" data-component="header"></label>
 </p>
 </form>
 

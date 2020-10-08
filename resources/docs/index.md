@@ -1,5 +1,5 @@
 ---
-title: 
+title: The Censorship API Documentation
 
 language_tabs:
 - bash
@@ -23,6 +23,8 @@ toc_footers:
 
 # Introduction
 
+The Censorship API gives you the power to censor anybody, anywhere. Keep them from using dirty words, like "family", and "love". Ugh🤮.
+
 This documentation aims to provide all the information you need to work with our API.
 
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -37,7 +39,7 @@ If you want to see them in action, clone <a href="https://github.com/shalvah/The
 </script>
 <script src="js/tryitout.js"></script>
 
-> Base URL:
+> Base URL
 
 ```yaml
 http://localhost:8000
