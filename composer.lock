@@ -5200,16 +5200,16 @@
         },
         {
             "name": "knuckleswtf/scribe",
-            "version": "2.1.0-alpha",
+            "version": "2.1.1-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/knuckleswtf/scribe.git",
-                "reference": "e2bea2f677cbdd8907fee6f580edaad5bf4ddbd0"
+                "reference": "fa4a2d9f4dd302b6b10eca60b365b36970eb0ae0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/e2bea2f677cbdd8907fee6f580edaad5bf4ddbd0",
-                "reference": "e2bea2f677cbdd8907fee6f580edaad5bf4ddbd0",
+                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/fa4a2d9f4dd302b6b10eca60b365b36970eb0ae0",
+                "reference": "fa4a2d9f4dd302b6b10eca60b365b36970eb0ae0",
                 "shasum": ""
             },
             "require": {
@@ -5284,7 +5284,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-10-08T12:25:51+00:00"
+            "time": "2020-10-08T13:07:17+00:00"
         },
         {
             "name": "mnapoli/front-yaml",
