@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "139e46354f6136007ccaf0a3ba774307",
+    "content-hash": "1203a6335d18d760758a8cf5c67fb668",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5200,16 +5200,16 @@
         },
         {
             "name": "knuckleswtf/scribe",
-            "version": "2.0.0-alpha",
+            "version": "2.1.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/knuckleswtf/scribe.git",
-                "reference": "8a1e845c2c37ad198404a574fdf346eadd03c394"
+                "reference": "e2bea2f677cbdd8907fee6f580edaad5bf4ddbd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/8a1e845c2c37ad198404a574fdf346eadd03c394",
-                "reference": "8a1e845c2c37ad198404a574fdf346eadd03c394",
+                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/e2bea2f677cbdd8907fee6f580edaad5bf4ddbd0",
+                "reference": "e2bea2f677cbdd8907fee6f580edaad5bf4ddbd0",
                 "shasum": ""
             },
             "require": {
@@ -5284,7 +5284,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-10-01T07:31:17+00:00"
+            "time": "2020-10-08T12:25:51+00:00"
         },
         {
             "name": "mnapoli/front-yaml",
