@@ -1,0 +1,155 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "localhost"
+        }
+    ],
+    "info": {
+        "name": "The Censorship API API",
+        "_postman_id": "d98b873b-d402-4040-9743-985cef0e4f30",
+        "description": "I love this API!!",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Services",
+            "description": "\nServices provided by this API.",
+            "item": [
+                {
+                    "name": "Highlight bad words in texts.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/services\/highlightBadWordsInText",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/services\/highlightBadWordsInText"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/x-www-form-urlencoded"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"texts\": [\n        \"He loves his family sooo much\",\n        \"But they don't fucking love him back.\"\n    ],\n    \"things\": [\n        {\n            \"name\": \"sed\"\n        },\n        {\n            \"name\": \"sed\"\n        }\n    ]\n}"
+                        },
+                        "description": "This endpoint will highlight any bad words in the provided texts, surrounding them with `<em><\/em>` HTML tags."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Censor bad words in texts.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/services\/censorTexts\/:mode",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/services\/censorTexts\/:mode",
+                            "variable": [
+                                {
+                                    "id": "mode",
+                                    "key": "mode",
+                                    "value": "et",
+                                    "description": "Censorship mode. `full` will replace the entire word with `=====`,\n`partial` will replace all characters but the first and last. Defaults to `partial`."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"texts\": \"He loves his family sooo much\",\n    \"items\": {\n        \"inttt\": 5\n    },\n    \"things\": [\n        {\n            \"name\": \"laborum\"\n        },\n        {\n            \"name\": \"laborum\"\n        }\n    ]\n}"
+                        },
+                        "description": "This endpoint will censor any bad words in a list of texts."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Censor bad words in an image.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/services\/censorImage",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/services\/censorImage"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get the most frequently used bad words.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/services\/getTopBadWords",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/services\/getTopBadWords"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "PS: This response was generated using the `@apiResource` and `@apiResourceModel` tag. \ud83d\ude0f"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}

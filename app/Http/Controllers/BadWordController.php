@@ -34,6 +34,9 @@ class BadWordController extends Controller
      * and you should play around with it for a bit.
      * <aside class="warning">We mean it; you really should.😕</aside>
      *
+     * @bodyParam word string required The word. Example: "children"
+     * @bodyParam how_bad_is_it string One of: `unspeakable`, `horrible`, `very bad`, `bad`. Example: very bad
+     * @bodyParam dad boolean
      * @response status=201 scenario="Word added" {"id": "http://google.com?page=3"}
      */
     public function store(CreateBadWordRequest $request)

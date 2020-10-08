@@ -20,8 +20,13 @@ class ServicesController extends Controller
      * Highlight bad words in texts.
      *
      * This endpoint will highlight any bad words in the provided texts, surrounding them with `<em></em>` HTML tags.
-     *
-     * @bodyParam texts.* string Texts to be highlighted. Example: He loves his family sooo much!
+     * @header Content-Type application/x-www-form-urlencoded
+     * @bodyParam texts string[] Texts to be highlighted.  Example: [
+     *   "He loves his family sooo much",
+     *   "But they don't fucking love him back."
+     * ]
+     * @bodyParam things object[] Things to be done.
+     * @bodyParam things[].name string required Thing.
      * @response {"highlighted": "He <em>loves</em> his <em>family</em> sooo much!"}
      */
     public function highlightBadWordsInText()
@@ -36,10 +41,11 @@ class ServicesController extends Controller
      * @urlParam mode Censorship mode. `full` will replace the entire word with `=====`,
      * `partial` will replace all characters but the first and last. Defaults to `partial`.
      *
-     * @bodyParam texts array Texts to be censored. Example: [
-     *   "He loves his family sooo much",
-     *   "But they don't fucking love him back."
-     * ]
+     * @bodyParam texts string[] Text to be censored. Example: "He loves his family sooo much"
+     * @bodyParam items object An it
+     * @bodyParam items.inttt int Other it
+     * @bodyParam things object[] Things to be done.
+     * @bodyParam things[].name string required Thing.
      *
      * @response [
      *   "He l===s his f====y sooo much",
@@ -55,7 +61,7 @@ class ServicesController extends Controller
      * Censor bad words in an image.
      * This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.
      *
-     * @bodyParam image file required The image containing text to be censored.
+     * @bodyParam image file required The image containing text to be censored. Example: ./public/images/logo-scribe.png
      * @response <<binary>> The censored image
      * @responseFile status=400 scenario="When the image's words are too powerful😢" responses/operation_failed.json {"reason": "The words are too touching.😭"}
      */
@@ -74,14 +80,13 @@ class ServicesController extends Controller
      */
     public function getTopBadWords()
     {
-        // return BadWordResource::collection(BadWord::simplePaginate(5));
+        return BadWordResource::collection(BadWord::simplePaginate(5));
     }
 
     /**
      * Get stats for a word's usage.
      *
      * PS: This response was generated using the `@transformer` tag. 😏
-     *
      * @transformer App\Http\Transformers\BadWordTransformer
      * @responseField word The word
      * @responseField last_used Timestamp the word was last used anywhere in the world.
@@ -89,9 +94,9 @@ class ServicesController extends Controller
      */
     public function getBadWordStats()
     {
-        // $fractal = new Manager();
-        // $word = BadWord::latest()->first();
-        // $resource = new Item($word, new BadWordTransformer());
-        // return $fractal->createData($resource)->toArray();
+        $fractal = new Manager();
+        $word = BadWord::latest()->first();
+        $resource = new Item($word, new BadWordTransformer());
+        return $fractal->createData($resource)->toArray();
     }
 }

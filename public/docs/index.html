@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/print.css" media="print" />
+        <script src="js/all.js"></script>
+
+        <link rel="stylesheet" href="css/highlight-darcula.css" media="" />
+        <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="" data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+            <img src="images/navbar.png" alt="-image" class=""/>
+      </span>
+</a>
+<div class="tocify-wrapper">
+                <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+        <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="./collection.json">View Postman Collection</a></li>
+                            <li><a href="./openapi.yaml">View OpenAPI (Swagger) Spec</a></li>
+                            <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
+                    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: October 8 2020</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1>Introduction</h1>
+<p>Welcome to our API documentation!</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile), and you can switch the programming language of the examples with the tabs in the top right (or from the nav menu at the top left on mobile).</aside>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script>
+    var baseUrl = "http://localhost:8000";
+</script>
+<script src="js/tryitout.js"></script>
+<blockquote>
+<p>Base URL:</p>
+</blockquote>
+<pre><code class="language-yaml">http://localhost:8000</code></pre><h1>Authenticating requests</h1>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {your-token}"</code></strong>.</p>
+<p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p><h1>Services</h1>
+<p>Services provided by this API.</p>
+<h2>Highlight bad words in texts.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>This endpoint will highlight any bad words in the provided texts, surrounding them with <code>&lt;em&gt;&lt;/em&gt;</code> HTML tags.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8000/api/services/highlightBadWordsInText" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    -H "Accept: application/json" \
+    -d '{"texts":["He loves his family sooo much","But they don't fucking love him back."],"things":[{"name":"sed"},{"name":"sed"}]}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/services/highlightBadWordsInText"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "application/json",
+};
+
+let body = {
+    "texts": [
+        "He loves his family sooo much",
+        "But they don't fucking love him back."
+    ],
+    "things": [
+        {
+            "name": "sed"
+        },
+        {
+            "name": "sed"
+        }
+    ]
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "highlighted": "He &lt;em&gt;loves&lt;\/em&gt; his &lt;em&gt;family&lt;\/em&gt; sooo much!"
+}</code></pre>
+<div id="execution-results-POSTapi-services-highlightBadWordsInText" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-services-highlightBadWordsInText"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-services-highlightBadWordsInText"></code></pre>
+</div>
+<div id="execution-error-POSTapi-services-highlightBadWordsInText" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-services-highlightBadWordsInText"></code></pre>
+</div>
+<form id="form-POSTapi-services-highlightBadWordsInText" data-method="POST" data-path="api/services/highlightBadWordsInText" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/x-www-form-urlencoded","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-highlightBadWordsInText', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-services-highlightBadWordsInText" onclick="tryItOut('POSTapi-services-highlightBadWordsInText');">Try it out ⚡</button>
+        <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-canceltryout-POSTapi-services-highlightBadWordsInText" onclick="cancelTryOut('POSTapi-services-highlightBadWordsInText');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-executetryout-POSTapi-services-highlightBadWordsInText" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/services/highlightBadWordsInText</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-services-highlightBadWordsInText" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-services-highlightBadWordsInText" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>texts</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
+<input type="text" name="texts.0" data-endpoint="POSTapi-services-highlightBadWordsInText" data-component="body"  hidden>
+<input type="text" name="texts.1" data-endpoint="POSTapi-services-highlightBadWordsInText" data-component="body" hidden>
+<br>
+Texts to be highlighted.</p>
+<p>
+<details>
+<summary>
+<b><code>things</code></b>&nbsp;&nbsp;<small>object[]</small>     <i>optional</i> &nbsp;
+<br>
+Things to be done.</summary>
+<br>
+<p>
+<b><code>things[].name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="things.0.name" data-endpoint="POSTapi-services-highlightBadWordsInText" data-component="body" required  hidden>
+<br>
+Thing.</p>
+</details>
+</p>
+
+</form>
+<h2>Censor bad words in texts.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>This endpoint will censor any bad words in a list of texts.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8000/api/services/censorTexts/et" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"texts":"He loves his family sooo much","items":{"inttt":5},"things":[{"name":"laborum"},{"name":"laborum"}]}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/services/censorTexts/et"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "texts": "He loves his family sooo much",
+    "items": {
+        "inttt": 5
+    },
+    "things": [
+        {
+            "name": "laborum"
+        },
+        {
+            "name": "laborum"
+        }
+    ]
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[
+    "He l===s his f====y sooo much",
+    "But they don't fucking l===e him back."
+]</code></pre>
+<div id="execution-results-POSTapi-services-censorTexts--mode--" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-services-censorTexts--mode--"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-services-censorTexts--mode--"></code></pre>
+</div>
+<div id="execution-error-POSTapi-services-censorTexts--mode--" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-services-censorTexts--mode--"></code></pre>
+</div>
+<form id="form-POSTapi-services-censorTexts--mode--" data-method="POST" data-path="api/services/censorTexts/{mode?}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-censorTexts--mode--', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-services-censorTexts--mode--" onclick="tryItOut('POSTapi-services-censorTexts--mode--');">Try it out ⚡</button>
+        <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-canceltryout-POSTapi-services-censorTexts--mode--" onclick="cancelTryOut('POSTapi-services-censorTexts--mode--');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-executetryout-POSTapi-services-censorTexts--mode--" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/services/censorTexts/{mode?}</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-services-censorTexts--mode--" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-services-censorTexts--mode--" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>mode</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="mode" data-endpoint="POSTapi-services-censorTexts--mode--" data-component="url"  hidden>
+<br>
+Censorship mode. `full` will replace the entire word with `=====`,
+`partial` will replace all characters but the first and last. Defaults to `partial`.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>texts</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
+<input type="text" name="texts.0" data-endpoint="POSTapi-services-censorTexts--mode--" data-component="body"  hidden>
+<input type="text" name="texts.1" data-endpoint="POSTapi-services-censorTexts--mode--" data-component="body" hidden>
+<br>
+Text to be censored.</p>
+<p>
+<details>
+<summary>
+<b><code>items</code></b>&nbsp;&nbsp;<small>object</small>     <i>optional</i> &nbsp;
+<br>
+An it</summary>
+<br>
+<p>
+<b><code>items.inttt</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="items.inttt" data-endpoint="POSTapi-services-censorTexts--mode--" data-component="body"  hidden>
+<br>
+Other it</p>
+</details>
+</p>
+<p>
+<details>
+<summary>
+<b><code>things</code></b>&nbsp;&nbsp;<small>object[]</small>     <i>optional</i> &nbsp;
+<br>
+Things to be done.</summary>
+<br>
+<p>
+<b><code>things[].name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="things.0.name" data-endpoint="POSTapi-services-censorTexts--mode--" data-component="body" required  hidden>
+<br>
+Thing.</p>
+</details>
+</p>
+
+</form>
+<h2>Censor bad words in an image.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>This endpoint will censor any bad words in the provided image and return the censored image. All bad words will be replaced by ======.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8000/api/services/censorImage" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: multipart/form-data" \
+    -H "Accept: application/json" \
+    -F "image=@C:\Users\shalvah\Projects\Temp\TheCensorshipAPI\public\images\logo-scribe.png" </code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/services/censorImage"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('image', document.querySelector('input[name="image"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">&lt;Binary data&gt; -  The censored image</code></pre>
+<blockquote>
+<p>Example response (400, When the image&#039;s words are too powerful😢):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Operation failed",
+    "reason": "The words are too touching.😭"
+}</code></pre>
+<div id="execution-results-POSTapi-services-censorImage" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-services-censorImage"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-services-censorImage"></code></pre>
+</div>
+<div id="execution-error-POSTapi-services-censorImage" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-services-censorImage"></code></pre>
+</div>
+<form id="form-POSTapi-services-censorImage" data-method="POST" data-path="api/services/censorImage" data-authed="1" data-hasfiles="1" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"multipart\/form-data","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-services-censorImage', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-POSTapi-services-censorImage" onclick="tryItOut('POSTapi-services-censorImage');">Try it out ⚡</button>
+        <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-canceltryout-POSTapi-services-censorImage" onclick="cancelTryOut('POSTapi-services-censorImage');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-executetryout-POSTapi-services-censorImage" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/services/censorImage</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-services-censorImage" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-services-censorImage" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>image</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+<input type="file" name="image" data-endpoint="POSTapi-services-censorImage" data-component="body" required  hidden>
+<br>
+The image containing text to be censored.</p>
+
+</form>
+<h2>Get the most frequently used bad words.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>PS: This response was generated using the <code>@apiResource</code> and <code>@apiResourceModel</code> tag. 😏</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8000/api/services/getTopBadWords" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/services/getTopBadWords"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "word": "voluptas",
+            "how_bad_is_it": "horrible"
+        },
+        {
+            "word": "est",
+            "how_bad_is_it": "unspeakable"
+        }
+    ],
+    "links": {
+        "first": "\/?page=1",
+        "last": null,
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "path": "\/",
+        "per_page": "5",
+        "to": 2
+    }
+}</code></pre>
+<div id="execution-results-GETapi-services-getTopBadWords" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-services-getTopBadWords"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-services-getTopBadWords"></code></pre>
+</div>
+<div id="execution-error-GETapi-services-getTopBadWords" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-services-getTopBadWords"></code></pre>
+</div>
+<form id="form-GETapi-services-getTopBadWords" data-method="GET" data-path="api/services/getTopBadWords" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-services-getTopBadWords', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-tryout-GETapi-services-getTopBadWords" onclick="tryItOut('GETapi-services-getTopBadWords');">Try it out ⚡</button>
+        <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-canceltryout-GETapi-services-getTopBadWords" onclick="cancelTryOut('GETapi-services-getTopBadWords');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius 5px; border-width: thin;" id="btn-executetryout-GETapi-services-getTopBadWords" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/services/getTopBadWords</code></b>
+</p>
+<p>
+<label id="auth-GETapi-services-getTopBadWords" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-services-getTopBadWords" data-component="header"></label>
+</p>
+</form>
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+<script>
+    $(function () {
+        var languages = ["bash","javascript"];
+        setupLanguages(languages);
+    });
+</script>
+</body>
+</html>

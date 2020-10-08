@@ -51,14 +51,18 @@ class AddPaginationParameters extends Strategy
         if ($isGetRoute && $isIndexRoute) {
             return [
                 'page' => [
+                    'name' => 'page',
                     'description' => 'Page number to return.',
                     'required' => false,
                     'value' => 1,
+                    'type' => 'string',
                 ],
                 'pageSize' => [
+                    'name' => 'pageSize',
                     'description' => 'Number of items to return in a page. Defaults to 10.',
                     'required' => false,
                     'value' => null,
+                    'type' => 'string',
                 ],
             ];
         }
