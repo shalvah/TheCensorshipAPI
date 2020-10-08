@@ -6,11 +6,18 @@
         "framework",
         "laravel"
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../scribe"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
         "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^2.0",
         "laravel/framework": "^7.0",
         "laravel/telescope": "^3.0",
         "laravel/tinker": "^2.0",
@@ -19,8 +26,8 @@
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
         "fzaninotto/faker": "^1.4",
+        "knuckleswtf/scribe": "@dev",
         "mockery/mockery": "^1.0",
-        "knuckleswtf/scribe": "dev-master",
         "phpunit/phpunit": "^7.5",
         "nunomaduro/collision": "^4.1"
     },
