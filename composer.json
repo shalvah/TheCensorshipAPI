@@ -6,30 +6,25 @@
         "framework",
         "laravel"
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../../scribe"
-        }
-    ],
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "facade/ignition": "^2.0",
+        "facade/ignition": "^2.3.6",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
-        "laravel/framework": "^7.0",
-        "laravel/telescope": "^3.0",
+        "laravel/framework": "^8.0",
+        "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "^3.0",
         "league/fractal": "^0.19.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
         "fzaninotto/faker": "^1.4",
-        "knuckleswtf/scribe": "@dev",
+        "knuckleswtf/scribe": "2.0.0-alpha",
         "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^7.5",
-        "nunomaduro/collision": "^4.1"
+        "phpunit/phpunit": "^9.0",
+        "nunomaduro/collision": "^5.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -43,12 +38,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "App\\": "app/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Database\\Factories\\": "database/factories/"
+        }
     },
     "autoload-dev": {
         "psr-4": {

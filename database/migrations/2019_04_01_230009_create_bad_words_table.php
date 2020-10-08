@@ -1,5 +1,6 @@
 <?php
 
+use App\BadWord;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -19,6 +20,8 @@ class CreateBadWordsTable extends Migration
             $table->string('how_bad_is_it'); //'unspeakable', 'horrible', 'very bad', 'bad'
             $table->timestamps();
         });
+
+        BadWord::factory()->count(5)->create();
     }
 
     /**
